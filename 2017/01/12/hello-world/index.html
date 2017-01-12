@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/12/hello-world/index.html">
 <meta property="og:site_name" content="Superb's blog">
 <meta property="og:description" content="#Welcome to my new blog!下面附录一大堆文字测试效果；    之所以提出这个问题，大概是因为自己单身20多年了，大脑原始层的生理功能机制压抑得太久的一种爆发吧！深感与世界脱轨，大学生生活太单调无味，除了学习就是游戏，想要寻找新的刺激，又或是身边朋友一个个找到女朋友，而自己还在原地踏步。   回到这个话题上来，身边的朋友，有的认识一见钟情就直接表白成功的；有的长跑多年，一击即中">
-<meta property="og:updated_time" content="2017-01-12T15:02:13.159Z">
+<meta property="og:updated_time" content="2017-01-12T15:33:33.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World(新文章测试1）">
 <meta name="twitter:description" content="#Welcome to my new blog!下面附录一大堆文字测试效果；    之所以提出这个问题，大概是因为自己单身20多年了，大脑原始层的生理功能机制压抑得太久的一种爆发吧！深感与世界脱轨，大学生生活太单调无味，除了学习就是游戏，想要寻找新的刺激，又或是身边朋友一个个找到女朋友，而自己还在原地踏步。   回到这个话题上来，身边的朋友，有的认识一见钟情就直接表白成功的；有的长跑多年，一击即中">
@@ -116,7 +116,7 @@
       apiKey: '38b0370542853f54401af3e5db381d65',
       indexName: 'feitianmai',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"输入关键字","hits_empty":"没有找到与'${query}'相关的内容","hits_stats":"${hits}条相关 记录，共耗时${time}ms"}
     }
   };
 </script>
@@ -188,6 +188,7 @@
 </div>
 
 <nav class="site-nav">
+
   
 
   
@@ -244,6 +245,18 @@
         </li>
       
 
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+<!-- 添加 结束 -->
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
       
 	  
 	  
@@ -402,6 +415,33 @@
   
 
   
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
 </nav>
 
 
@@ -543,7 +583,7 @@
       
 
       
-        <p>#<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="530" height="86" src="http://www.xiami.com/play?ids=/song/playlist/id/2100392261/type/1#open&auto=0&height=66"></iframe><br>Welcome to my new blog!<br>下面附录一大堆文字测试效果；<br>    之所以提出这个问题，大概是因为自己单身20多年了，大脑原始层的生理功能机制压抑得太久的一种爆发吧！<br>深感与世界脱轨，大学生生活太单调无味，除了学习就是游戏，想要寻找新的刺激，又或是身边朋友一个个找<br>到女朋友，而自己还在原地踏步。<br>   回到这个话题上来，身边的朋友，有的认识一见钟情就直接表白成功的；有的长跑多年，一击即中的；有的<br>   隔三差五就到手的。我有时候在想，一个人的初恋不要这么随便吧，好吧，我承认这是一种自以为是成熟的<br>   不成熟想法…曾经我也以为这是一个看脸的世界，但是身边一些小伙伴，有些长得也不比自己好呀，为什么女<br>   朋友可以这么漂亮呢？是因为那个人脸皮厚吗，因为我看到别人说，不要脸才能追到女朋友..那么问题来了<br>   ，如果女神觉得你烦呢，还依然要不要脸吗？所以我有时候真的好纠结。<br>     也并不是自己不愿意出去交际，不愿意主动，曾经我也相当的主动过跟过某个女孩子表白，当<br>     时我们刚分班，是用短信表白的..当时她拒绝我的理由是我们刚认识不久，我天真的以为，只要我们<br>     相处久了，再次表白就可以成功，我也很厚脸皮啊啊啊啊，后来也有再次表白，结果尴尬了…这只不<br>     过是一种委婉的拒绝..对我来说感觉厚脸皮好像也没啥用，是不是对方不喜欢一个人，就一直不会有机会..<br>       对于追求女朋友，我的启蒙书本算是三重门吧，我印象最深的是主角写好一封情书，那封情书一定要撕掉，<br>       然后让对方以为你是相当慎重的，不是那么随便的。其次便是里面的情诗，类似“是否你将要向北远行,那我<br>       将放弃向南的决定”。之后便是在知乎还有咪蒙公众号看到的一些所谓的方法.大概是要厚脸皮，要对别人好<br>       …最后是身边一些朋友怂恿的表白方式，什么约出来倒数..,在宿舍楼下点蜡烛，写情书之类的了。但是<br>       最最最重要的是，这些方法在我身上似乎不奏效，好吧，我承认我只表白过一两次，还都失败了。也许是被<br>       打击了，也许是觉得自己做很多事情都是自作多情，然后会成为别人眼中很讨厌的人，慢慢被这种情绪压抑<br>       下，自己感觉自己对爱情这种东西渐行渐远，吾日三省吾身，我也有尝试检讨自己问题出在哪里，但是情况<br>       都不乐观。久而久之，自己慢慢开始麻痹在这种别人又不会喜欢你之类的情绪中，失去了主动的追求，还有<br>       电视剧中狗血的情节，毕竟在这个自古深情留不住，总是套路得人心的世界，还是需要一点套路的！<br>     所以我就开始迷惑了，到底喜欢一个人，应该做些什么，因人而异？帮人买早餐？但是不同班，这个不现实，<br>     哎哎哎啊？到底喜欢一个人多久才是表白的最佳时机？我写这篇文章之前询问过我的舍友，还有隔壁宿舍，他<br>     们对于这个问题，有的是给出具体的时间，一个星期；有的觉得因人而异；有的说最长时间不超过三个月。<br>     说到底吧，在这个看颜值的世界，如果颜值跟我一样也就那样了。如果要追求自己喜欢的妹子，是不是要变得<br>     幽默风趣，成熟稳重呢，还是了解清楚妹子到底喜欢什么类型的呢。如果喜欢的是不同专业，相互都不太喜欢<br>     发朋友圈，无从得知共同话题，平时又没有什么机会接触的呢？这又该如何下手？<br>    说到底，写了这么多，只是想发泄一下情绪罢了！</p>
+        <p>#<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="300" height="86" src="http://www.xiami.com/play?ids=/song/playlist/id/2100392261/type/1#open&auto=0&height=66"></iframe><br>Welcome to my new blog!<br>下面附录一大堆文字测试效果；<br>    之所以提出这个问题，大概是因为自己单身20多年了，大脑原始层的生理功能机制压抑得太久的一种爆发吧！<br>深感与世界脱轨，大学生生活太单调无味，除了学习就是游戏，想要寻找新的刺激，又或是身边朋友一个个找<br>到女朋友，而自己还在原地踏步。<br>   回到这个话题上来，身边的朋友，有的认识一见钟情就直接表白成功的；有的长跑多年，一击即中的；有的<br>   隔三差五就到手的。我有时候在想，一个人的初恋不要这么随便吧，好吧，我承认这是一种自以为是成熟的<br>   不成熟想法…曾经我也以为这是一个看脸的世界，但是身边一些小伙伴，有些长得也不比自己好呀，为什么女<br>   朋友可以这么漂亮呢？是因为那个人脸皮厚吗，因为我看到别人说，不要脸才能追到女朋友..那么问题来了<br>   ，如果女神觉得你烦呢，还依然要不要脸吗？所以我有时候真的好纠结。<br>     也并不是自己不愿意出去交际，不愿意主动，曾经我也相当的主动过跟过某个女孩子表白，当<br>     时我们刚分班，是用短信表白的..当时她拒绝我的理由是我们刚认识不久，我天真的以为，只要我们<br>     相处久了，再次表白就可以成功，我也很厚脸皮啊啊啊啊，后来也有再次表白，结果尴尬了…这只不<br>     过是一种委婉的拒绝..对我来说感觉厚脸皮好像也没啥用，是不是对方不喜欢一个人，就一直不会有机会..<br>       对于追求女朋友，我的启蒙书本算是三重门吧，我印象最深的是主角写好一封情书，那封情书一定要撕掉，<br>       然后让对方以为你是相当慎重的，不是那么随便的。其次便是里面的情诗，类似“是否你将要向北远行,那我<br>       将放弃向南的决定”。之后便是在知乎还有咪蒙公众号看到的一些所谓的方法.大概是要厚脸皮，要对别人好<br>       …最后是身边一些朋友怂恿的表白方式，什么约出来倒数..,在宿舍楼下点蜡烛，写情书之类的了。但是<br>       最最最重要的是，这些方法在我身上似乎不奏效，好吧，我承认我只表白过一两次，还都失败了。也许是被<br>       打击了，也许是觉得自己做很多事情都是自作多情，然后会成为别人眼中很讨厌的人，慢慢被这种情绪压抑<br>       下，自己感觉自己对爱情这种东西渐行渐远，吾日三省吾身，我也有尝试检讨自己问题出在哪里，但是情况<br>       都不乐观。久而久之，自己慢慢开始麻痹在这种别人又不会喜欢你之类的情绪中，失去了主动的追求，还有<br>       电视剧中狗血的情节，毕竟在这个自古深情留不住，总是套路得人心的世界，还是需要一点套路的！<br>     所以我就开始迷惑了，到底喜欢一个人，应该做些什么，因人而异？帮人买早餐？但是不同班，这个不现实，<br>     哎哎哎啊？到底喜欢一个人多久才是表白的最佳时机？我写这篇文章之前询问过我的舍友，还有隔壁宿舍，他<br>     们对于这个问题，有的是给出具体的时间，一个星期；有的觉得因人而异；有的说最长时间不超过三个月。<br>     说到底吧，在这个看颜值的世界，如果颜值跟我一样也就那样了。如果要追求自己喜欢的妹子，是不是要变得<br>     幽默风趣，成熟稳重呢，还是了解清楚妹子到底喜欢什么类型的呢。如果喜欢的是不同专业，相互都不太喜欢<br>     发朋友圈，无从得知共同话题，平时又没有什么机会接触的呢？这又该如何下手？<br>    说到底，写了这么多，只是想发泄一下情绪罢了！</p>
 <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
@@ -985,6 +1025,19 @@
   
 
   
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
 
 
 </body>
