@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-13T10:56:36.428Z</updated>
+  <updated>2017-01-13T12:51:09.481Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,22 +20,26 @@
     <link href="http://yoursite.com/2017/01/12/hello-world/"/>
     <id>http://yoursite.com/2017/01/12/hello-world/</id>
     <published>2017-01-12T12:01:56.000Z</published>
-    <updated>2017-01-13T10:56:36.428Z</updated>
+    <updated>2017-01-13T12:51:09.481Z</updated>
     
-    <content type="html"><![CDATA[<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=431357712&auto=0&height=66"></iframe><br>Welcome to my new blog!<br>下面附录一大堆文字测试效果；<br>    之所以提出这个问题，大概是因为自己单身20多年了，大脑原始层的生理功能机制压抑得太久的一种爆发吧！深感与世界脱轨，大学生生活太单调无味，除了学习就是游戏，想要寻找新的刺激，又或是身边朋友一个个找到女朋友，而自己还在原地踏步。回到这个话题上来，身边的朋友，有的认识一见钟情就直接表白成功的；有的长跑多年，一击即中的；有的隔三差五就到手的。我有时候在想，一个人的初恋不要这么随便吧，好吧，我承认这是一种自以为是成熟的不成熟想法…曾经我也以为这是一个看脸的世界，但是身边一些小伙伴，有些长得也不比自己好呀，为什么女朋友可以这么漂亮呢？是因为那个人脸皮厚吗，因为我看到别人说，不要脸才能追到女朋友..那么问题来了，如果女神觉得你烦呢，还依然要不要脸吗？所以我有时候真的好纠结。<a id="more"></a><br>    也并不是自己不愿意出去交际，不愿意主动，曾经我也相当的主动过跟过某个女孩子表白，当时我们刚分班，是用短信表白的..当时她拒绝我的理由是我们刚认识不久，我天真的以为，只要我们相处久了，再次表白就可以成功，我也很厚脸皮啊啊啊啊，后来也有再次表白，结果尴尬了…这只不过是一种委婉的拒绝..对我来说感觉厚脸皮好像也没啥用，是不是对方不喜欢一个人，就一直不会有机会..对于追求女朋友，我的启蒙书本算是三重门吧，我印象最深的是主角写好一封情书，那封情书一定要撕掉然后让对方以为你是相当慎重的，不是那么随便的。其次便是里面的情诗，类似“是否你将要向北远行,那我将放弃向南的决定”。之后便是在知乎还有咪蒙公众号看到的一些所谓的方法.大概是要厚脸皮，要对别人好.。.最后是身边一些朋友怂恿的表白方式，什么约出来倒数..,在宿舍楼下点蜡烛，写情书之类的了。但是最最最重要的是，这些方法在我身上似乎不奏效，好吧，我承认我只表白过一两次，还都失败了。也许是被打击了，也许是觉得自己做很多事情都是自作多情，然后会成为别人眼中很讨厌的人，慢慢被这种情绪压下，自己感觉自己对爱情这种东西渐行渐远，吾日三省吾身，我也有尝试检讨自己问题出在哪里，但是情况都不乐观。久而久之，自己慢慢开始麻痹在这种别人又不会喜欢你之类的情绪中，失去了主动的追求，还有电视剧中狗血的情节，毕竟在这个自古深情留不住，总是套路得人心的世界，还是需要一点套路的！所以我就开始迷惑了，到底喜欢一个人，应该做些什么，因人而异？帮人买早餐？但是不同班，这个不现实，哎哎哎啊？到底喜欢一个人多久才是表白的最佳时机？我写这篇文章之前询问过我的舍友，还有隔壁宿舍，他们对于这个问题，有的是给出具体的时间，一个星期；有的觉得因人而异；有的说最长时间不超过三个月。说到底吧，在这个看颜值的世界，如果颜值跟我一样也就那样了。如果要追求自己喜欢的妹子，是不是要变得幽默风趣，成熟稳重呢，还是了解清楚妹子到底喜欢什么类型的呢。如果喜欢的是不同专业，相互都不太喜欢发朋友圈，无从得知共同话题，平时又没有什么机会接触的呢？这又该如何下手？<br>    说到底，写了这么多，只是想发泄一下情绪罢了！</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=431357712&auto=0&height=66"></iframe><strong>Welcome to my new blog! </strong><br>下面附录一大堆文字测试效果；</p>
+<p>之所以提出这个问题，大概是因为自己单身20多年了，大脑原始层的生理功能机制压抑得太久的一种爆发吧！深感与世界脱轨，大学生生活太单调无味，除了学习就是游戏，想要寻找新的刺激，又或是身边朋友一个个找到女朋友，而自己还在原地踏步。回到这个话题上来，身边的朋友，有的认识一见钟情就直接表白成功的；有的长跑多年，一击即中的；有的隔三差五就到手的。我有时候在想，一个人的初恋不要这么随便吧，好吧，我承认这是一种自以为是成熟的不成熟想法…曾经我也以为这是一个看脸的世界，但是身边一些小伙伴，有些长得也不比自己好呀，为什么女朋友可以这么漂亮呢？是因为那个人脸皮厚吗，因为我看到别人说，不要脸才能追到女朋友..那么问题来了，如果女神觉得你烦呢，还依然要不要脸吗？所以我有时候真的好纠结。<a id="more"></a></p>
+<p>也并不是自己不愿意出去交际，不愿意主动，曾经我也相当的主动过跟过某个女孩子表白，当时我们刚分班，是用短信表白的..当时她拒绝我的理由是我们刚认识不久，我天真的以为，只要我们相处久了，再次表白就可以成功，我也很厚脸皮啊啊啊啊，后来也有再次表白，结果尴尬了…这只不过是一种委婉的拒绝..对我来说感觉厚脸皮好像也没啥用，是不是对方不喜欢一个人，就一直不会有机会..对于追求女朋友，我的启蒙书本算是三重门吧，我印象最深的是主角写好一封情书，那封情书一定要撕掉然后让对方以为你是相当慎重的，不是那么随便的。其次便是里面的情诗，类似“是否你将要向北远行,那我将放弃向南的决定”。之后便是在知乎还有咪蒙公众号看到的一些所谓的方法.大概是要厚脸皮，要对别人好.。.最后是身边一些朋友怂恿的表白方式，什么约出来倒数..,在宿舍楼下点蜡烛，写情书之类的了。但是最最最重要的是，这些方法在我身上似乎不奏效，好吧，我承认我只表白过一两次，还都失败了。也许是被打击了，也许是觉得自己做很多事情都是自作多情，然后会成为别人眼中很讨厌的人，慢慢被这种情绪压下，自己感觉自己对爱情这种东西渐行渐远，吾日三省吾身，我也有尝试检讨自己问题出在哪里，但是情况都不乐观。久而久之，自己慢慢开始麻痹在这种别人又不会喜欢你之类的情绪中，失去了主动的追求，还有电视剧中狗血的情节，毕竟在这个自古深情留不住，总是套路得人心的世界，还是需要一点套路的！所以我就开始迷惑了，到底喜欢一个人，应该做些什么，因人而异？帮人买早餐？但是不同班，这个不现实，哎哎哎啊？到底喜欢一个人多久才是表白的最佳时机？我写这篇文章之前询问过我的舍友，还有隔壁宿舍，他们对于这个问题，有的是给出具体的时间，一个星期；有的觉得因人而异；有的说最长时间不超过三个月。说到底吧，在这个看颜值的世界，如果颜值跟我一样也就那样了。如果要追求自己喜欢的妹子，是不是要变得幽默风趣，成熟稳重呢，还是了解清楚妹子到底喜欢什么类型的呢。如果喜欢的是不同专业，相互都不太喜欢发朋友圈，无从得知共同话题，平时又没有什么机会接触的呢？这又该如何下手？</p>
+<p>说到底，写了这么多，只是想发泄一下情绪罢了！</p>
+<h2 id="格式标语"><a href="#格式标语" class="headerlink" title="格式标语"></a>格式标语</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=431357712&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;&lt;br&gt;Welcome to my new blog!&lt;br&gt;下面附录一大堆文字测试效果；&lt;br&gt;    之所以提出这个问题，大概是因为自己单身20多年了，大脑原始层的生理功能机制压抑得太久的一种爆发吧！深感与世界脱轨，大学生生活太单调无味，除了学习就是游戏，想要寻找新的刺激，又或是身边朋友一个个找到女朋友，而自己还在原地踏步。回到这个话题上来，身边的朋友，有的认识一见钟情就直接表白成功的；有的长跑多年，一击即中的；有的隔三差五就到手的。我有时候在想，一个人的初恋不要这么随便吧，好吧，我承认这是一种自以为是成熟的不成熟想法…曾经我也以为这是一个看脸的世界，但是身边一些小伙伴，有些长得也不比自己好呀，为什么女朋友可以这么漂亮呢？是因为那个人脸皮厚吗，因为我看到别人说，不要脸才能追到女朋友..那么问题来了，如果女神觉得你烦呢，还依然要不要脸吗？所以我有时候真的好纠结。
+      &lt;p&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=431357712&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;&lt;strong&gt;Welcome to my new blog! &lt;/strong&gt;&lt;br&gt;下面附录一大堆文字测试效果；&lt;/p&gt;
+&lt;p&gt;之所以提出这个问题，大概是因为自己单身20多年了，大脑原始层的生理功能机制压抑得太久的一种爆发吧！深感与世界脱轨，大学生生活太单调无味，除了学习就是游戏，想要寻找新的刺激，又或是身边朋友一个个找到女朋友，而自己还在原地踏步。回到这个话题上来，身边的朋友，有的认识一见钟情就直接表白成功的；有的长跑多年，一击即中的；有的隔三差五就到手的。我有时候在想，一个人的初恋不要这么随便吧，好吧，我承认这是一种自以为是成熟的不成熟想法…曾经我也以为这是一个看脸的世界，但是身边一些小伙伴，有些长得也不比自己好呀，为什么女朋友可以这么漂亮呢？是因为那个人脸皮厚吗，因为我看到别人说，不要脸才能追到女朋友..那么问题来了，如果女神觉得你烦呢，还依然要不要脸吗？所以我有时候真的好纠结。
     
     </summary>
     
