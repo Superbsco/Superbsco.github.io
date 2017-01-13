@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-13T12:51:09.481Z</updated>
+  <updated>2017-01-13T14:57:10.741Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,58 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>记录Hexo+Github免费搭建个人博客</title>
+    <link href="http://yoursite.com/2017/01/13/new-article/"/>
+    <id>http://yoursite.com/2017/01/13/new-article/</id>
+    <published>2017-01-13T13:03:55.000Z</published>
+    <updated>2017-01-13T14:57:10.741Z</updated>
+    
+    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">不急，先上一首歌曲，然后慢慢记录~</blockquote><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=281275&auto=0&height=66"></iframe>这几天从早到晚一直在利用Hexo搭建自己的博客，中途谷歌百度了很多教程，一路经历各种坎坷艰辛，而且别人的教程版本都很旧，在自己摸索下终于完成了现在这个博客，为了不使自己忘记，也因为一直有记录的习惯，那就写一下这个博客的搭建记录吧~</p>
+<p><div style="color:#E9967A">这个记录流程只适用于windows</div></p>
+<h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><p>1.<a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a><br>2.<a href="https://git-scm.com/" target="_blank" rel="external">Git</a></p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>上面两个文件安装好之后，在你觉得合适的位置，建立一个文件夹（下面以该文件夹命名为Hexo为例），进入该文件夹，右击鼠标选择Git Bash,然后输入下列文字（目的是安装Hexo,$已经帮你打好,为了形象在此加入$）:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure></p>
+<h3 id="在本地搭建Hexo"><a href="#在本地搭建Hexo" class="headerlink" title="在本地搭建Hexo"></a>在本地搭建Hexo</h3><p>安装Hexo后，继续在<i style="color:#F08080">当前 </i>Git Bash里面按顺序执行以下命令(中途也许会看到warn提醒，可以不管)：<a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo --save</div><div class="line">$ hexo -v</div><div class="line">$ hexo init</div><div class="line">$ npm install</div><div class="line">$ hexo g</div><div class="line">$ hexo s</div></pre></td></tr></table></figure></p>
+<p>当你执行完hexo s后，你会看到 <i style="color:#9400D3">“INFO  Hexo is running at http : / /0.0.0.0:4000/.Press Ctrl+C to stop.”</i>这句话这时候，不要关闭git bash，在高级浏览器（chorm，火狐，等）输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 你就可以看到你的博客了。</p>
+<h3 id="为你的博客更换主题"><a href="#为你的博客更换主题" class="headerlink" title="为你的博客更换主题"></a>为你的博客更换主题</h3><p>hexo为我们提供了很多<a href="https://hexo.io/themes/" target="_blank" rel="external">主题</a>,如果你觉得初始主题已经不错了，那就不用更换了，下面以主题Next为例，继续记录~~<br>在./Hexo下打开Git Bash 输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next</div></pre></td></tr></table></figure></p>
+<p>这表示下载Next主题，等待主题下载完毕~~然后在打开../Hexo/_config.yml，建议是使用Notepad++,用Notepad++打开后ctrl+F弹出搜索框，输入关键字theme:，然后找到theme: 后大概是这样的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Extensions</span></div><div class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></div><div class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></div><div class="line">theme: landscape</div></pre></td></tr></table></figure></p>
+<p>这时候把<i style="color:#6495ED">landscape</i>改为:<br><i style="color:#8A2BE2">（如果手打记得冒号后面必须加一个空格！）</i><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: next</div></pre></td></tr></table></figure></p>
+<p>然后先执行hexo clean，然后重新hexo g，并且hexo d，很快就能看到新主题的效果了~<br>Next有三套主题选择，打开./Hexo/themes/next/_config.yml 搜索关键字Schemes：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Schemes</span></div><div class="line"><span class="comment">#scheme: Muse</span></div><div class="line">scheme: Mist</div><div class="line"><span class="comment">#scheme: Pisces</span></div></pre></td></tr></table></figure></p>
+<p>#代表注释，如果去掉#就说明使用当前主题。下面以使用Next.Mist主题为例..</p>
+<h3 id="配置个人博客"><a href="#配置个人博客" class="headerlink" title="配置个人博客"></a>配置个人博客</h3><p>打开../Hexo/_config.yml<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Site</span></div><div class="line">title: “你的博客名字”</div><div class="line">subtitle: “副标题”</div><div class="line">description: “描述”</div><div class="line">author: “作者”</div><div class="line">language: zh-Hans“这里的设置请参考下图”</div><div class="line">timezone:</div></pre></td></tr></table></figure></p>
+<p><img src="uploads/nextlan.png"><br>打开./Hexo/themes/next/_config.yml （这里是配置网页导航）（还需要其他导航，参考Next开发文档）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  archives: /archives</div><div class="line">  categories: /categories</div><div class="line">  tags: /tags</div><div class="line">  about: /about</div><div class="line">  <span class="comment">#sitemap: /sitemap.xml</span></div><div class="line">  <span class="comment">#commonweal: /404.html</span></div><div class="line">  <span class="comment">#下面是对应的图标哦</span></div><div class="line">  menu_icons:</div><div class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></div><div class="line">  <span class="comment">#KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome</span></div><div class="line">  home: home</div><div class="line">  about: user</div><div class="line">  categories: th</div><div class="line">  schedule: calendar</div><div class="line">  tags: tags</div><div class="line">  archives: archive</div><div class="line">  sitemap: sitemap</div><div class="line">  commonweal: heartbeat</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;不急，先上一首歌曲，然后慢慢记录~&lt;/blockquote&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=281275&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;这几天从早到晚一直在利用Hexo搭建自己的博客，中途谷歌百度了很多教程，一路经历各种坎坷艰辛，而且别人的教程版本都很旧，在自己摸索下终于完成了现在这个博客，为了不使自己忘记，也因为一直有记录的习惯，那就写一下这个博客的搭建记录吧~&lt;/p&gt;
+&lt;p&gt;&lt;div style=&quot;color:#E9967A&quot;&gt;这个记录流程只适用于windows&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&quot;准备工具&quot;&gt;&lt;a href=&quot;#准备工具&quot; class=&quot;headerlink&quot; title=&quot;准备工具&quot;&gt;&lt;/a&gt;准备工具&lt;/h3&gt;&lt;p&gt;1.&lt;a href=&quot;https://nodejs.org/en/&quot;&gt;Node.js&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;安装Hexo&quot;&gt;&lt;a href=&quot;#安装Hexo&quot; class=&quot;headerlink&quot; title=&quot;安装Hexo&quot;&gt;&lt;/a&gt;安装Hexo&lt;/h3&gt;&lt;p&gt;上面两个文件安装好之后，在你觉得合适的位置，建立一个文件夹（下面以该文件夹命名为Hexo为例），进入该文件夹，右击鼠标选择Git Bash,然后输入下列文字（目的是安装Hexo,$已经帮你打好,为了形象在此加入$）:&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ npm install -g hexo-cli&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&quot;在本地搭建Hexo&quot;&gt;&lt;a href=&quot;#在本地搭建Hexo&quot; class=&quot;headerlink&quot; title=&quot;在本地搭建Hexo&quot;&gt;&lt;/a&gt;在本地搭建Hexo&lt;/h3&gt;&lt;p&gt;安装Hexo后，继续在&lt;i style=&quot;color:#F08080&quot;&gt;当前 &lt;/i&gt;Git Bash里面按顺序执行以下命令(中途也许会看到warn提醒，可以不管)：
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
+    
+    
+      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+    
+      <category term="多说" scheme="http://yoursite.com/tags/%E5%A4%9A%E8%AF%B4/"/>
+    
+      <category term="搜索" scheme="http://yoursite.com/tags/%E6%90%9C%E7%B4%A2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://yoursite.com/2017/01/12/hello-world/"/>
     <id>http://yoursite.com/2017/01/12/hello-world/</id>
     <published>2017-01-12T12:01:56.000Z</published>
-    <updated>2017-01-13T12:51:09.481Z</updated>
+    <updated>2017-01-13T12:59:06.780Z</updated>
     
     <content type="html"><![CDATA[<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=431357712&auto=0&height=66"></iframe><strong>Welcome to my new blog! </strong><br>下面附录一大堆文字测试效果；</p>
 <p>之所以提出这个问题，大概是因为自己单身20多年了，大脑原始层的生理功能机制压抑得太久的一种爆发吧！深感与世界脱轨，大学生生活太单调无味，除了学习就是游戏，想要寻找新的刺激，又或是身边朋友一个个找到女朋友，而自己还在原地踏步。回到这个话题上来，身边的朋友，有的认识一见钟情就直接表白成功的；有的长跑多年，一击即中的；有的隔三差五就到手的。我有时候在想，一个人的初恋不要这么随便吧，好吧，我承认这是一种自以为是成熟的不成熟想法…曾经我也以为这是一个看脸的世界，但是身边一些小伙伴，有些长得也不比自己好呀，为什么女朋友可以这么漂亮呢？是因为那个人脸皮厚吗，因为我看到别人说，不要脸才能追到女朋友..那么问题来了，如果女神觉得你烦呢，还依然要不要脸吗？所以我有时候真的好纠结。<a id="more"></a></p>
