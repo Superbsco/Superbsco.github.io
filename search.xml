@@ -12,7 +12,7 @@
     <entry>
       <title><![CDATA[Hello World]]></title>
       <url>%2F2017%2F01%2F12%2Fhello-world%2F</url>
-      <content type="text"><![CDATA[Welcome to my new blog! 下面附录一大堆文字测试效果； 之前一直在学习html+css，偶尔查找资料发现了基于Hexo的博客，我一下子被这么美观的设计吸引了，原来有人可以把网页设计的这么棒，整个篇幅下来没有广告，很整洁，很清晰，主题明朗，阅读体验超级棒，于是想着搜索这个网站到底是怎么建立的，那么就找到了，原来这是一个台湾大学生tommy351用node.js开发的Hexo，Hexo是一个开源的静态博客生成器。对于建立个人网站来说，没有什么比博客更合适了，既然是开源的，那么我就疯狂谷歌百度查找资料，最终基于Hexo 3.2.2版本，使用Next主题写成了这个博客 谷歌百度查到的资料层出不穷，版本新旧都有，而且很简单的东西，有人非要写的那么复杂，让人看不懂，在综合了很多很多教程之后，遇到过很多很多问题，都是一个个的慢慢解决，比如头像旋转啊，添加facebook，微博啊之类的，最后的最后发现最基本的开发文档才是最靠谱的！！ 随便写下这个首篇博客暖暖场，下面附录一些基本插入代码的格式，加入标题的格式，方便以后查看~~ 格式标语Create a new post1hexo new "My New Post" More info: Writing Run server1hexo server More info: Server Generate static files1hexo generate More info: Generating Deploy to remote sites1hexo deploy More info: Deployment]]></content>
+      <content type="text"><![CDATA[Welcome to my new blog! 下面附录一大堆文字测试效果； 我望着长城，常常不能自语。之前一直在学习html+css，偶尔查找资料发现了基于Hexo的博客，我一下子被这么美观的设计吸引了，原来有人可以把网页设计的这么棒，整个篇幅下来没有广告，很整洁，很清晰，主题明朗，阅读体验超级棒，于是想着搜索这个网站到底是怎么建立的，那么就找到了，原来这是一个台湾大学生tommy351用node.js开发的Hexo，Hexo是一个开源的静态博客生成器。对于建立个人网站来说，没有什么比博客更合适了，既然是开源的，那么我就疯狂谷歌百度查找资料，最终基于Hexo 3.2.2版本，使用Next主题写成了这个博客 谷歌百度查到的资料层出不穷，版本新旧都有，而且很简单的东西，有人非要写的那么复杂，让人看不懂，在综合了很多很多教程之后，遇到过很多很多问题，都是一个个的慢慢解决，比如头像旋转啊，添加facebook，微博啊之类的，最后的最后发现最基本的开发文档才是最靠谱的！！ 随便写下这个首篇博客暖暖场，下面附录一些基本插入代码的格式，加入标题的格式，方便以后查看~~ 格式标语Create a new post1hexo new "My New Post" More info: Writing Run server1hexo server More info: Server Generate static files1hexo generate More info: Generating Deploy to remote sites1hexo deploy More info: Deployment]]></content>
     </entry>
 
     
