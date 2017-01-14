@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-14T11:52:42.725Z</updated>
+  <updated>2017-01-14T12:48:22.499Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,332 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>操作系统实践之文件管理之文件系统设计 </title>
+    <title>基数排序 </title>
+    <link href="http://yoursite.com/2017/01/14/shujujiegou/"/>
+    <id>http://yoursite.com/2017/01/14/shujujiegou/</id>
+    <published>2017-01-14T11:26:35.000Z</published>
+    <updated>2017-01-14T12:48:22.499Z</updated>
+    
+    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">如果一片瓦尔登湖不能荡涤心灵，那就没办法了~</blockquote><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=439625137&auto=0&height=66"></iframe></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据结构实践任务，花了几个星期在网上找，都是不完全的版本，加入自己的理解写下能牌数字和字母的基数排序~</p>
+<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>对输入的关键字序列进行链式基数排序，并分析算法复杂度。</p>
+<h3 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a>任务要求</h3><p>1)    对输入的自然数关键字序列进行链式基数排序。<br>2)    需排序的数据是英文单词，从文件中读取；按字典顺序排列，写文件保存。</p>
+<h3 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h3><p>输入自然数关键字序列：278，109，63，930，589，184，505，269，8，83。<br>输入英文单词组成的文件，按字典排序并输出到文件中。<a id="more"></a></p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>第一个自然数关键字排序直接在cmd窗口输入即可排序。<br>第二个读取字母并排序之前需要在D盘中创建一个f1.txt文件，在里面输入10个长度小于等于9的单词，每输入一个单词换行。这里不管是自然数还是单词统一使用MSD优先排序（即从前往后对比）。<br>具体排序思路参考严蔚敏的数据结构。</p>
+<h3 id="算法复杂度分析"><a href="#算法复杂度分析" class="headerlink" title="算法复杂度分析"></a>算法复杂度分析</h3><p><img src="/uploads/jishupx.png"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> <code style="color: #FF0033">此代码在VS2015上正常运行~</code></p>
+<pre><code class="bash">
+<span class="comment">#include &lt;iostream&gt;</span>
+<span class="comment">#include &lt;fstream&gt; //文件输入输出流</span>
+<span class="comment">#include&lt;string&gt;</span>
+using namespace std;
+//数字结构体
+<span class="comment">#define MAX_NUM_OF_KEY 8//关键字项数的最大值</span>
+<span class="comment">#define RADIX    10//关键字基数，此时是十进制整数的基数</span>
+<span class="comment">#define MAX_SPACE 10000</span>
+typedef int DataType;
+typedef struct
+{
+    int data;//数据，如278
+    DataType keys[MAX_NUM_OF_KEY];//每个数据的所有关键字，278的2，7，8
+    int next;
+}SLCell;    //静态链表的节点类型
+typedef struct Sllist
+{
+    SLCell *R; //静态链表的可利用空间，r[0]为头结点
+    int recnum; //静态链表的当前长度
+    int keynum; //当前数据的关键字个数
+}Sllist, *SLList; //静态链表类型
+typedef int ArrType[RADIX];//指针数组类型，声明两个指针数组，一个头指针，一个尾指针
+
+//字母结构体
+<span class="comment">#define MaxLen 9  //单词的最大长度</span>
+<span class="comment">#define Radix  27 //基数rd为27,分别对应' ','a',…'z'</span>
+typedef char String[MaxLen + 1];//定义String为字符数组类型                              
+typedef struct node
+{
+    String word;  //单词
+    struct node *next;  //next指针
+} LinkNode;
+//数字基数排序
+void creatList(SLList &amp;SLL) //创建链表
+{
+    int key;
+    int i = 1, j;
+    cout &lt;&lt; <span class="string">"输入要进行排序的数字(输入0结束):"</span> &lt;&lt; endl;
+    cin &gt;&gt; key;
+    <span class="keyword">while</span> (key != 0)
+    {
+        SLL-&gt;R[i].data = key;
+        <span class="keyword">for</span> (j = 1; j &lt;= SLL-&gt;keynum; j++)
+        {
+            SLL-&gt;R[i].keys[j] = key % 10;
+            key /= 10;
+        }
+        SLL-&gt;R[i - 1].next = i++;
+        cin &gt;&gt; key;
+    }
+    SLL-&gt;recnum = i - 1;
+    SLL-&gt;R[SLL-&gt;recnum].next = 0;
+}
+//打印输出
+void <span class="built_in">print</span>(SLList &amp;SLL)
+{
+    <span class="keyword">for</span> (int p = SLL-&gt;R[0].next; p; p = SLL-&gt;R[p].next)
+    {
+        cout &lt;&lt;<span class="string">"["</span>&lt;&lt; SLL-&gt;R[p].data &lt;&lt;<span class="string">"]"</span>&lt;&lt; <span class="string">"  "</span>;
+    }
+    cout &lt;&lt; endl;
+}
+//分配算法
+void distribute(SLCell *R, int i, ArrType front, ArrType end)
+{
+    //静态链表L的R域中记录已按(keys[0]...keys[i-1]有序)。
+    //本算法按第i个关键字keys[i]建立RADIX个子表，使同一子表中记录的keys[i]相同。
+    //front[0...RADIX-1]和end[0...RADIX-1]分别指向各子表中第一个和最后一个记录。
+    int j;
+    <span class="keyword">for</span> (int j = 0; j&lt;RADIX; ++j)
+        front[j] = 0;        //各子表初始化为空表
+    <span class="keyword">for</span> (int p = R[0].next; p; p = R[p].next)
+    {
+        j = R[p].keys[i];           //映射第i个关键字
+        <span class="keyword">if</span> (!front[j])
+            front[j] = p;        //若front[j]为空，则把记录连接到front[j]的头指针上
+        <span class="keyword">else</span>
+            R[end[j]].next = p;    //若front[j]的头指针已经连接过了，说明已j为关键字的数据已经有了，
+                                   //这时把上一个以j为关键字的数据指向当前的这个数，即下标为p的数据
+        end[j] = p;        //尾指针重新指到每次更新的数据上
+    }
+}
+//收集算法
+void collect(SLCell *R, int i, ArrType front, ArrType end)
+{
+    //本算法按keys[i]自小到大地将f[0...RADIX-1]所指各子表依次链接成为一个链表
+    int j;
+    <span class="keyword">for</span> (j = 0; !front[j]; j++);   //找到第一个不为空的子表
+    R[0].next = front[j];            //重整静态链表
+    int k = end[j];                    //k为当前子表的尾指针
+    <span class="keyword">while</span> (j&lt;RADIX)
+    {
+        <span class="keyword">for</span> (++j; j&lt;RADIX; j++)
+            <span class="keyword">if</span> (front[j])        //找下一个非空子表
+            {
+                R[k].next = front[j];        //连接
+                k = end[j];
+            }
+    }
+    R[k].next = 0;                    //k指向最后一个非空子表的尾指针
+}
+//字母基数排序
+void DispWord(String R[], int n) //输出单词
+{
+    int i;
+    string o[10];
+    ofstream fout(<span class="string">"D:\\inf.txt"</span>); //排序成功后，重新对排序写入inf.txt
+    <span class="keyword">if</span> (!fout)
+    {
+        cout &lt;&lt; <span class="string">"Fail to write to file.\n"</span>;
+    }
+    <span class="keyword">for</span> (i = 0; i &lt; n; i++)
+    {
+        cout &lt;&lt; <span class="string">"["</span> &lt;&lt; R[i] &lt;&lt; <span class="string">"]"</span>;
+        o[i] = R[i];
+        fout &lt;&lt; <span class="string">"["</span>&lt;&lt;o[i]&lt;&lt;<span class="string">"]"</span> &lt;&lt; endl;
+    }
+    cout &lt;&lt; endl;
+    fout.close();
+}
+void PreProcess(String R[], int n)
+//对单词进行预处理,用空格填充尾部至MaxLen长
+{
+    int i, j;
+    <span class="keyword">for</span> (i = 0; i&lt;n; i++)
+    {
+        <span class="keyword">if</span> (strlen(R[i])&lt;MaxLen)
+        {
+            <span class="keyword">for</span> (j = strlen(R[i]); j&lt;MaxLen; j++)
+                R[i][j] = <span class="string">' '</span>;
+            R[i][j] = <span class="string">'\0'</span>;
+        }
+    }
+}
+void EndProcess(String R[], int n)
+//恢复处理,删除预处理时填充的尾部空格
+{
+    int i, j;
+    <span class="keyword">for</span> (i = 0; i&lt;n; i++)
+    {
+        <span class="keyword">for</span> (j = MaxLen - 1; R[i][j] == <span class="string">' '</span>; j--);
+        R[i][j + 1] = <span class="string">'\0'</span>;
+    }
+}
+void Distribute(String R[], LinkNode *head[], LinkNode *tail[], int j, int n)
+//按关键字的第j个分量进行分配,进入此过程时各队列一定为空
+{
+    int i, k;
+    LinkNode *p;
+    <span class="keyword">for</span> (i = 0; i&lt;n; i++)         //依次扫描R[i],将其入队
+    {
+        <span class="keyword">if</span> (R[i][j] == <span class="string">' '</span>)       //空格时放入0号队列中,<span class="string">'a'</span>时放入1号队列中,…
+            k = 0;
+        <span class="keyword">else</span>
+            k = R[i][j] - <span class="string">'a'</span> + 1;
+        p = (LinkNode *)malloc(sizeof(LinkNode)); //创建新结点
+        strcpy_s(p-&gt;word, R[i]);
+        p-&gt;next = NULL;
+        <span class="keyword">if</span> (head[k] == NULL)
+        {
+            head[k] = p;
+            tail[k] = p;
+        }
+        <span class="keyword">else</span>
+        {
+            tail[k]-&gt;next = p;
+            tail[k] = p;
+        }
+    }
+}
+void Collect(String R[], LinkNode *head[])
+//依次将各非空队列中的记录收集起来
+{
+    int k = 0, i;
+    LinkNode *p;
+    <span class="keyword">for</span> (i = 0; i&lt;Radix; i++)
+        <span class="keyword">for</span> (p = head[i]; p != NULL; p = p-&gt;next)
+            strcpy_s(R[k++], p-&gt;word);
+}
+void RadixSort(String R[], int n)    //对R[0..n-1]进行基数排序
+{
+    LinkNode *head[Radix], *tail[Radix]; //定义Radix个队列
+    int i, j;
+    int k = 1;
+    <span class="keyword">for</span> (i = MaxLen - 1; i &gt;= 0; i--)             //从低位到高位做d趟箱排序
+    {
+        <span class="keyword">for</span> (j = 0; j&lt;Radix; j++)
+            head[j] = tail[j] = NULL;           //队列置空
+        Distribute(R, head, tail, i, n);        //第i趟分配
+        Collect(R, head);                    //第i趟收集
+        cout &lt;&lt; <span class="string">"第"</span> &lt;&lt; k &lt;&lt; <span class="string">"趟分配和收集:"</span> &lt;&lt; endl;
+        <span class="keyword">for</span> (int m = 0; m &lt;10; m++)
+        {
+            cout&lt;&lt;<span class="string">"["</span>&lt;&lt;R[m]&lt;&lt;<span class="string">"]"</span>;
+        }
+        k++;
+        cout &lt;&lt; endl;
+    }
+}
+//主函数
+int <span class="function"><span class="title">main</span></span>()
+{
+    SLList SLL;
+    SLL = (SLList)malloc(MAX_SPACE * sizeof(Sllist));
+    SLL-&gt;R = (SLCell *)malloc(MAX_SPACE * sizeof(SLCell));
+    SLL-&gt;recnum = 0;
+    SLL-&gt;keynum = 3;
+    string R[10];
+    String c[10];
+    ifstream fopen(<span class="string">"D:\\f1.txt"</span>);//读取D盘inf.txt文件
+    <span class="keyword">if</span> (!fopen)
+    {
+        cout &lt;&lt; <span class="string">"fail to read the file.\n"</span>;
+    }
+    <span class="keyword">while</span> (!fopen.eof()) {   //读取D盘写入的文件
+        <span class="keyword">for</span> (int q = 0; q&lt;10; q++) {
+            getline(fopen, R[q]); //读取第一行
+            strcpy_s(c[q],R[q].c_str());
+        }
+    }
+    fopen.close();
+    /*ofstream fout(<span class="string">"D:\\inf.txt"</span>); //排序成功后，重新对用户信息写入inf.txt
+    <span class="keyword">if</span> (!fout)
+    {
+        cout &lt;&lt; <span class="string">"Fail to write to file.\n"</span>;
+    }
+    <span class="keyword">for</span> (int o = 0; o &lt; 10; o++) {
+        fout &lt;&lt; c[o] &lt;&lt; endl;
+    }
+    fout.close();*/
+    int k;
+    <span class="keyword">while</span> (1) {
+        cout &lt;&lt; <span class="string">"*************基数排序程序***************"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"*          选择要执行的命令            *"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"*    1.输入自然数进行链式基数排序      *"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"*    2.从文件中读取字母,按字典顺序排列 *"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"*    3.退出程序                   *"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"****************************************"</span> &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+        cin &gt;&gt; k;
+        switch (k)
+        {
+        <span class="keyword">case</span> 1:
+            creatList(SLL);
+            cout &lt;&lt; <span class="string">"排序前:"</span> &lt;&lt; endl;
+            <span class="built_in">print</span>(SLL);
+            ArrType front, end;
+            <span class="keyword">for</span> (int i = 1; i &lt;= SLL-&gt;keynum; i++)    //按LSD法对各关键字进行分配和收集
+            {
+                distribute(SLL-&gt;R, i, front, end);    //第i趟分配
+                collect(SLL-&gt;R, i, front, end);        //第i趟收集
+                cout &lt;&lt; <span class="string">"第"</span> &lt;&lt; i &lt;&lt; <span class="string">"趟分配和收集:"</span> &lt;&lt; endl;
+                <span class="built_in">print</span>(SLL);
+            }
+            cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+            <span class="built_in">break</span>;
+        <span class="keyword">case</span> 2:
+            cout &lt;&lt; <span class="string">"从D:\\f1.txt中读取到的单词为："</span> &lt;&lt; endl;
+            DispWord(c, 10);
+            PreProcess(c, 10);
+            cout &lt;&lt; <span class="string">"预处理后："</span> &lt;&lt; endl;
+            DispWord(c, 10);
+            RadixSort(c, 10);
+            cout &lt;&lt; <span class="string">"排序结果："</span> &lt;&lt; endl;
+            DispWord(c, 10);
+            EndProcess(c, 10);
+            cout &lt;&lt; <span class="string">"最终结果："</span> &lt;&lt; endl;
+            DispWord(c, 10);
+            cout &lt;&lt; <span class="string">"******排序后的结果已经成功写入D盘inf.txt!******"</span>;
+            cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+            <span class="built_in">break</span>;
+        <span class="keyword">case</span> 3:
+            <span class="built_in">exit</span>(0);
+        default:
+            cout &lt;&lt; <span class="string">"请输入正确的数字！"</span> &lt;&lt; endl;
+            <span class="built_in">break</span>;
+        }
+    }
+    <span class="built_in">return</span> 0;
+}
+</code></pre>
+  <hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;如果一片瓦尔登湖不能荡涤心灵，那就没办法了~&lt;/blockquote&gt;&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=439625137&amp;auto=0&amp;height=66&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;数据结构实践任务，花了几个星期在网上找，都是不完全的版本，加入自己的理解写下能牌数字和字母的基数排序~&lt;/p&gt;
+&lt;h2 id=&quot;基数排序&quot;&gt;&lt;a href=&quot;#基数排序&quot; class=&quot;headerlink&quot; title=&quot;基数排序&quot;&gt;&lt;/a&gt;基数排序&lt;/h2&gt;&lt;h3 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h3&gt;&lt;p&gt;对输入的关键字序列进行链式基数排序，并分析算法复杂度。&lt;/p&gt;
+&lt;h3 id=&quot;任务要求&quot;&gt;&lt;a href=&quot;#任务要求&quot; class=&quot;headerlink&quot; title=&quot;任务要求&quot;&gt;&lt;/a&gt;任务要求&lt;/h3&gt;&lt;p&gt;1)    对输入的自然数关键字序列进行链式基数排序。&lt;br&gt;2)    需排序的数据是英文单词，从文件中读取；按字典顺序排列，写文件保存。&lt;/p&gt;
+&lt;h3 id=&quot;测试数据&quot;&gt;&lt;a href=&quot;#测试数据&quot; class=&quot;headerlink&quot; title=&quot;测试数据&quot;&gt;&lt;/a&gt;测试数据&lt;/h3&gt;&lt;p&gt;输入自然数关键字序列：278，109，63，930，589，184，505，269，8，83。&lt;br&gt;输入英文单词组成的文件，按字典排序并输出到文件中。
+    
+    </summary>
+    
+      <category term="基数排序" scheme="http://yoursite.com/categories/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
+    
+    
+      <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="基数排序" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文件管理之文件系统设计 </title>
     <link href="http://yoursite.com/2017/01/14/ospassage/"/>
     <id>http://yoursite.com/2017/01/14/ospassage/</id>
     <published>2017-01-14T11:26:35.000Z</published>
-    <updated>2017-01-14T11:52:42.725Z</updated>
+    <updated>2017-01-14T12:10:58.817Z</updated>
     
     <content type="html"><![CDATA[<p><blockquote class="blockquote-center">当夜幕降临时，在太阳以西，国境以南处，等候你的归来~</blockquote><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=407759451&auto=0&height=66"></iframe></p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是操作系统课上的一个课后作业，操作系统考完后基本就忘记的差不多了，把这个实践代码在这里重新过一遍~</p>
@@ -47,9 +368,9 @@
     
       <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
     
-      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
       <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
