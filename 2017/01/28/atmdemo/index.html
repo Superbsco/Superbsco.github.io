@@ -1,0 +1,1145 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="java,c++,ATM," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Superb's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言C++实践选的题目是模拟银行ATM的操作。JAVA实践的时候用NETBEANS 写成界面。
+模拟银行ATM机查询余额：初始余额为10000元ATM取款：每次取款金额为100的倍数，总额不超过5000元，支取金额不允许透支。ATM存款：不能出现负存款。修改密码：新密码长度不小于6位，不允许出现6位完全相同的情况，只有旧密码正确，新密码符合要求，且两次输入相同的情况下才可以成功修改密码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模拟银行ATM机">
+<meta property="og:url" content="http://yoursite.com/2017/01/28/atmdemo/index.html">
+<meta property="og:site_name" content="Superb's blog">
+<meta property="og:description" content="前言C++实践选的题目是模拟银行ATM的操作。JAVA实践的时候用NETBEANS 写成界面。
+模拟银行ATM机查询余额：初始余额为10000元ATM取款：每次取款金额为100的倍数，总额不超过5000元，支取金额不允许透支。ATM存款：不能出现负存款。修改密码：新密码长度不小于6位，不允许出现6位完全相同的情况，只有旧密码正确，新密码符合要求，且两次输入相同的情况下才可以成功修改密码。">
+<meta property="og:image" content="http://yoursite.com/uploads/cpic.png">
+<meta property="og:image" content="http://yoursite.com/uploads/atmnetpic.png">
+<meta property="og:image" content="http://yoursite.com/uploads/atmnetpic1.png">
+<meta property="og:image" content="http://yoursite.com/uploads/atmnetpic2.png">
+<meta property="og:updated_time" content="2017-01-28T07:40:02.772Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模拟银行ATM机">
+<meta name="twitter:description" content="前言C++实践选的题目是模拟银行ATM的操作。JAVA实践的时候用NETBEANS 写成界面。
+模拟银行ATM机查询余额：初始余额为10000元ATM取款：每次取款金额为100的倍数，总额不超过5000元，支取金额不允许透支。ATM存款：不能出现负存款。修改密码：新密码长度不小于6位，不允许出现6位完全相同的情况，只有旧密码正确，新密码符合要求，且两次输入相同的情况下才可以成功修改密码。">
+<meta name="twitter:image" content="http://yoursite.com/uploads/cpic.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6374617650407933000',
+      author: '博主大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/28/atmdemo/"/>
+
+
+
+
+
+  <title> 模拟银行ATM机 | Superb's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fbeafca0a296dd1484d1b2c1dca61357";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Superb's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">给时间以生命，而不是给生命以时间。</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  <!-- 添加  theme.algolia_search.enable -->
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+<!-- 添加 开始 -->
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/28/atmdemo/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="黄少鹏">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/img_toux.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Superb's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Superb's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                模拟银行ATM机
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-28T14:51:37+08:00">
+                2017-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ATM/" itemprop="url" rel="index">
+                    <span itemprop="name">ATM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/28/atmdemo/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/28/atmdemo/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/28/atmdemo/" class="leancloud_visitors" data-flag-title="模拟银行ATM机">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=293870&auto=0&height=66"></iframe></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>C++实践选的题目是模拟银行ATM的操作。JAVA实践的时候用NETBEANS 写成界面。</p>
+<h3 id="模拟银行ATM机"><a href="#模拟银行ATM机" class="headerlink" title="模拟银行ATM机"></a>模拟银行ATM机</h3><p>查询余额：初始余额为10000元<br>ATM取款：每次取款金额为100的倍数，总额不超过5000元，支取金额不允许透支。<br>ATM存款：不能出现负存款。<br>修改密码：新密码长度不小于6位，不允许出现6位完全相同的情况，只有旧密码正确，新密码符合要求，且两次输入相同的情况下才可以成功修改密码。<a id="more"></a></p>
+<h3 id="C-使用文本命令行界面"><a href="#C-使用文本命令行界面" class="headerlink" title="C++使用文本命令行界面"></a>C++使用文本命令行界面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line"><span class="comment">#include &lt;string&gt;  </span></div><div class="line"><span class="comment">#include &lt;fstream&gt; //读写文件的头文件</span></div><div class="line"><span class="comment">#include &lt;conio.h&gt; //使用该头文件调用函数getch（）可以不回显读取密码</span></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">class BankAccount//登陆银行账户类</div><div class="line">&#123;</div><div class="line">private:</div><div class="line">	string account,password;</div><div class="line">	string account1,password1;</div><div class="line">public:</div><div class="line">	<span class="function"><span class="title">BankAccount</span></span>()</div><div class="line">	&#123;</div><div class="line">		ifstream fopen(<span class="string">"D:\\inf.txt"</span>);//读取D盘inf.txt文件</div><div class="line">		<span class="keyword">if</span> (!fopen)</div><div class="line">		&#123;</div><div class="line">			cout &lt;&lt; <span class="string">"fail to read the file.\n"</span>;</div><div class="line">		&#125;</div><div class="line">		string line1,line3;</div><div class="line">		<span class="keyword">while</span> (!fopen.eof()) &#123;   //读取D盘写入的文件</div><div class="line">			getline(fopen, line1); //读取第一行，下面以此类推</div><div class="line">			getline(fopen, account);</div><div class="line">			getline(fopen, line3);</div><div class="line">			getline(fopen, password);</div><div class="line">		&#125;</div><div class="line">		fopen.close();</div><div class="line">		cout &lt;&lt; <span class="string">"********************************************************************"</span> &lt;&lt; endl;//进入ATM的初始界面</div><div class="line">		cout &lt;&lt; <span class="string">"****************$欢迎使用银行ATM自动取款机********************"</span> &lt;&lt; endl;</div><div class="line">		cout &lt;&lt; <span class="string">"********************************************************************"</span> &lt;&lt; endl;</div><div class="line">		cout &lt;&lt; <span class="string">"请输入您的银行卡号:"</span>;</div><div class="line">		cin &gt;&gt; account1;</div><div class="line">		cout &lt;&lt; <span class="string">"请输入您的银行密码:"</span>;</div><div class="line">		char p[20],i=0;</div><div class="line">		<span class="keyword">while</span>(p[i]=_getch())//调用getch（）不回显获取密码</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (p[i]!=<span class="string">'\r'</span>)</div><div class="line">			&#123;</div><div class="line">				cout &lt;&lt; <span class="string">"*"</span>;</div><div class="line">				i++;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> &#123;<span class="built_in">break</span>;&#125;</div><div class="line">		&#125;</div><div class="line">		p[i]=<span class="string">'\0'</span>;</div><div class="line">		password1=p;</div><div class="line">		<span class="keyword">if</span> (account == account1 &amp;&amp;  password == password1) &#123;</div><div class="line">			cout &lt;&lt; endl;</div><div class="line">			cout &lt;&lt; <span class="string">"登陆银行账户成功!"</span> &lt;&lt; endl;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			cout &lt;&lt; <span class="string">"\n登陆银行账户失败，请检查您的账户密码是否正确"</span> &lt;&lt; endl;</div><div class="line">			<span class="built_in">exit</span>(0);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;;</div><div class="line">class UI_Display //进去ATM后的UI界面类</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">	<span class="function"><span class="title">UI_Display</span></span>() &#123;</div><div class="line">		cout &lt;&lt; <span class="string">"--------------------------------"</span> &lt;&lt; endl;</div><div class="line">		cout &lt;&lt; <span class="string">"请按下列数字执行您所需服务！"</span> &lt;&lt; endl;</div><div class="line">		cout &lt;&lt; <span class="string">"1.查询余额    2.ATM取款"</span> &lt;&lt; endl;</div><div class="line">		cout &lt;&lt; <span class="string">"3.ATM存款     4.修改密码"</span> &lt;&lt; endl;</div><div class="line">		cout &lt;&lt; <span class="string">"    5.退出银行ATM机    "</span> &lt;&lt; endl;</div><div class="line">		cout &lt;&lt; <span class="string">"--------------------------------"</span> &lt;&lt; endl;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;;</div><div class="line">class FileWriteNReading  //读取文件并且对ATM的各项操作类</div><div class="line">&#123;</div><div class="line">private:</div><div class="line">	int TotalMoney;</div><div class="line">	int num,WithdrawingMoney,Saving;</div><div class="line">	string os, pas1, pas2;</div><div class="line">	string pas;</div><div class="line">	string line1, line2,line3;</div><div class="line">	char l,j,k;</div><div class="line">public:</div><div class="line">	<span class="function"><span class="title">FileWriteNReading</span></span>() &#123;</div><div class="line">		TotalMoney=10000;</div><div class="line">		l=0;j=0;k=0;</div><div class="line">		ifstream fopen(<span class="string">"D:\\inf.txt"</span>);  //读取D盘写入的inf.txt文件的信息</div><div class="line">		<span class="keyword">if</span> (!fopen)</div><div class="line">		&#123;</div><div class="line">			cout &lt;&lt; <span class="string">"fail to read the file.\n"</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">while</span> (!fopen.eof()) &#123;</div><div class="line">			getline(fopen, line1);  //读取第一行信息，下面以此类推。此处的目的是获取密码pas</div><div class="line">			getline(fopen, line2);</div><div class="line">			getline(fopen, line3);</div><div class="line">			getline(fopen, pas);</div><div class="line">		&#125;</div><div class="line">		fopen.close();</div><div class="line">		<span class="keyword">while</span> (1)  //设置死循环</div><div class="line">		&#123;</div><div class="line">			UI_Display();</div><div class="line">			cin &gt;&gt; num;</div><div class="line">			switch (num) //利用switch语句，对要进行的操作进行选择</div><div class="line">			&#123;</div><div class="line">			<span class="keyword">case</span> 1://显示余额</div><div class="line">				show();</div><div class="line">				<span class="built_in">break</span>;</div><div class="line">			<span class="keyword">case</span> 2://取款操作</div><div class="line">				cout &lt;&lt; <span class="string">"请输入您所需取款的金额且每次取款的金额为100的倍数，总额不超过5000元，不能透支取款:"</span>;</div><div class="line">				cin &gt;&gt; WithdrawingMoney;</div><div class="line">				<span class="keyword">if</span> (WithdrawingMoney % 100 == 0 &amp;&amp; WithdrawingMoney &lt;= 5000 &amp;&amp; WithdrawingMoney &lt;= TotalMoney)</div><div class="line">				&#123;</div><div class="line">					cout &lt;&lt; <span class="string">"您已取钱成功，取款金额为："</span> &lt;&lt; WithdrawingMoney &lt;&lt; endl;</div><div class="line">					WithdrawingMoney1(WithdrawingMoney);</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span></div><div class="line">				&#123;</div><div class="line">					cout &lt;&lt; <span class="string">"您取钱失败，请检查输入金额是否为100的倍数或总额是否超过5000元或余额是否充足。"</span> &lt;&lt; endl;</div><div class="line">				&#125;</div><div class="line">				<span class="built_in">break</span>;</div><div class="line">			<span class="keyword">case</span> 3://存款操作</div><div class="line">				cout &lt;&lt; <span class="string">"请输入您所需存款的金额:"</span>;</div><div class="line">				cin &gt;&gt; Saving;</div><div class="line">				<span class="keyword">if</span> (Saving &gt;= 0)</div><div class="line">				&#123;</div><div class="line">					cout &lt;&lt; <span class="string">"您已存钱成功，存钱金额为："</span> &lt;&lt; Saving &lt;&lt; endl;</div><div class="line">					Saving1(Saving);</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span></div><div class="line">				&#123;</div><div class="line">					cout &lt;&lt; <span class="string">"您存钱失败，请检查存入金额"</span>&lt;&lt;endl;</div><div class="line">				&#125;</div><div class="line">				<span class="built_in">break</span>;</div><div class="line">			<span class="keyword">case</span> 4://修改密码操作</div><div class="line">				cout &lt;&lt; <span class="string">"注意新密码不小于6位且不能出现6位数字相同\n"</span>;</div><div class="line">				cout &lt;&lt; <span class="string">"请输入原密码:"</span>;</div><div class="line">				char p[20];</div><div class="line">				<span class="keyword">while</span>(p[l]=_getch()) //对输入的原密码进行不回显输入</div><div class="line">				&#123;</div><div class="line">					<span class="keyword">if</span> (p[l]!=<span class="string">'\r'</span>)</div><div class="line">					&#123;</div><div class="line">						cout &lt;&lt; <span class="string">"*"</span>;</div><div class="line">						l++;</div><div class="line">					&#125;</div><div class="line">					<span class="keyword">else</span> &#123;<span class="built_in">break</span>;&#125;</div><div class="line">				&#125;</div><div class="line">				p[l]=<span class="string">'\0'</span>;</div><div class="line">				os=p;</div><div class="line">				<span class="keyword">if</span> (os == pas)  //如果密码与原来的密码相同，便修改密码成功</div><div class="line">				&#123;</div><div class="line">					cout&lt;&lt;endl;</div><div class="line">					cout &lt;&lt; <span class="string">"请输入修改后的密码:"</span>;</div><div class="line">					char q[20];</div><div class="line">					<span class="keyword">while</span>(q[j]=_getch()) //第一次输入修改后的密码不回显输入</div><div class="line">					&#123;</div><div class="line">						<span class="keyword">if</span> (q[j]!=<span class="string">'\r'</span>)</div><div class="line">						&#123;</div><div class="line">							cout &lt;&lt; <span class="string">"*"</span>;</div><div class="line">							j++;</div><div class="line">						&#125;</div><div class="line">						<span class="keyword">else</span> &#123;<span class="built_in">break</span>;&#125;</div><div class="line">					&#125;</div><div class="line">						q[j]=<span class="string">'\0'</span>;</div><div class="line">						pas1=q;</div><div class="line">						cout&lt;&lt;endl;</div><div class="line">			cout &lt;&lt; <span class="string">"请再输入修改后的密码:"</span>;//第二次输入修改后的密码不回显输入</div><div class="line">			char r[20];</div><div class="line">			<span class="keyword">while</span>(r[k]=_getch())</div><div class="line">			&#123;</div><div class="line">				<span class="keyword">if</span> (r[k]!=<span class="string">'\r'</span>)</div><div class="line">				&#123;</div><div class="line">				cout &lt;&lt; <span class="string">"*"</span>;</div><div class="line">				k++;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span> &#123;<span class="built_in">break</span>;&#125;</div><div class="line">			&#125;</div><div class="line">			r[k]=<span class="string">'\0'</span>;</div><div class="line">			pas2=r;</div><div class="line">			cout&lt;&lt;endl;</div><div class="line">						<span class="keyword">if</span> (pas1 == pas2) //对密码进行限制</div><div class="line">						&#123;</div><div class="line">							int n;//将string的密码转换成int类型</div><div class="line">							n = atoi(pas1.c_str());</div><div class="line">							<span class="keyword">if</span> (n &gt; 999999 || n &lt; 99999) //保证密码是6位</div><div class="line">							&#123;</div><div class="line">								cout &lt;&lt; <span class="string">"请确认密码为6位！！\n"</span>;</div><div class="line">								<span class="built_in">break</span>;</div><div class="line">							&#125;</div><div class="line">							//保证6位密码不相同</div><div class="line">							<span class="keyword">else</span> <span class="keyword">if</span> (n == 000000 || n == 111111 || n == 222222 || n == 333333 || n == 444444 || n == 555555 || n == 666666 || n == 777777 || n == 888888)</div><div class="line">							&#123;</div><div class="line">								cout &lt;&lt; <span class="string">"请确认密码不允许6位相同！！\n"</span>;</div><div class="line">								<span class="built_in">break</span>;</div><div class="line">							&#125;</div><div class="line">							//保证原密码与新修改后的密码不相同</div><div class="line">							<span class="keyword">else</span> <span class="keyword">if</span> (n == 123456) &#123; cout &lt;&lt; <span class="string">"修改密码失败，你的密码与原密码相同！"</span>&lt;&lt;endl;  </div><div class="line">							<span class="built_in">break</span>;</div><div class="line">							&#125;</div><div class="line">							<span class="keyword">else</span></div><div class="line">							&#123;	</div><div class="line">								cout &lt;&lt; <span class="string">"密码修改成功,请重新登陆账号！"</span> &lt;&lt; endl;</div><div class="line">								ofstream fout(<span class="string">"D:\\inf.txt"</span>); //密码修改成功后，重新对用户信息写入inf.txt</div><div class="line">								<span class="keyword">if</span> (!fout)</div><div class="line">								&#123;</div><div class="line">									cout &lt;&lt; <span class="string">"Fail to write to file.\n"</span>;</div><div class="line">								&#125;</div><div class="line">								fout &lt;&lt; <span class="string">"该用户的账户为:"</span> &lt;&lt; endl &lt;&lt; line2 &lt;&lt; endl &lt;&lt; <span class="string">"该用户的密码为:"</span> &lt;&lt; endl &lt;&lt; pas1;</div><div class="line">								fout.close();</div><div class="line">								BankAccount();//再次调用输入账户类</div><div class="line">							&#125;</div><div class="line">						&#125;</div><div class="line">						<span class="keyword">else</span></div><div class="line">						&#123;</div><div class="line">							cout &lt;&lt; <span class="string">"密码修改失败，请检查两次输入的密码是否一致。"</span>&lt;&lt;endl;</div><div class="line">							<span class="built_in">break</span>;</div><div class="line">						&#125;</div><div class="line">					<span class="built_in">break</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span></div><div class="line">				&#123;</div><div class="line">					cout &lt;&lt; <span class="string">"\n原密码输入错误，请检查！"</span> &lt;&lt; endl &lt;&lt; endl;</div><div class="line">					<span class="built_in">break</span>;</div><div class="line">				&#125;</div><div class="line">			<span class="keyword">case</span> 5://额外增加的选项，以便跳出死循环</div><div class="line">				cout&lt;&lt;<span class="string">"你已退出系统账户！"</span>&lt;&lt;endl;</div><div class="line">				<span class="built_in">exit</span>(0);</div><div class="line">			default:</div><div class="line">				<span class="built_in">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">	void WithdrawingMoney1(int WithdrawingMoney)&#123;TotalMoney -= WithdrawingMoney;&#125;//取款数额</div><div class="line">	void Saving1(int Saving)&#123;TotalMoney += Saving;&#125;//存款数额</div><div class="line">	void <span class="function"><span class="title">show</span></span>()&#123;cout&lt;&lt;<span class="string">"你的账户余额为"</span>&lt;&lt;TotalMoney&lt;&lt;<span class="string">"元"</span>&lt;&lt;endl;&#125;//显示账户余额</div><div class="line">&#125;;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()</div><div class="line">&#123;</div><div class="line">	ofstream fout(<span class="string">"D:\\inf.txt"</span>);//第一次写入D盘文件inf.txt</div><div class="line">	<span class="keyword">if</span> (!fout)</div><div class="line">	&#123;</div><div class="line">		cout &lt;&lt; <span class="string">"Fail to write to file.\n"</span>;</div><div class="line">	&#125;</div><div class="line">	fout &lt;&lt; <span class="string">"该用户的账号为:\n"</span> &lt;&lt; <span class="string">"123456"</span> &lt;&lt; endl &lt;&lt; <span class="string">"该用户的密码为:\n"</span> &lt;&lt; <span class="string">"123456"</span> &lt;&lt; endl;//对用户的初始账户密码进行设置</div><div class="line">	fout.close();</div><div class="line">	BankAccount();//调用用户账户类</div><div class="line">	FileWriteNReading();//调用文件读写类</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> <code style="color: #FF0033">此代码在VS2015上正常运行~运行效果图:</code><br>  <div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/uploads/cpic.png" class="full-image"></div></div><div class="group-picture-row"></div></div></div></p>
+<h3 id="netbeans连接数据库可视化界面ATM"><a href="#netbeans连接数据库可视化界面ATM" class="headerlink" title="netbeans连接数据库可视化界面ATM"></a>netbeans连接数据库可视化界面ATM</h3><p> <code style="color: #FF0033">1.使用泛型，获取任何类型的账户密码余额</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public class ATM&lt;A,P,B&gt; &#123;</div><div class="line">    private A account;</div><div class="line">    private P password;</div><div class="line">    private B balance;</div><div class="line">    public ATM(A account,P password,B balance)&#123;</div><div class="line">        this.setElem1(account);</div><div class="line">        this.setElem2(password);</div><div class="line">        this.setElem3(balance);</div><div class="line">    &#125;</div><div class="line">   public A <span class="function"><span class="title">getElem1</span></span>()&#123;</div><div class="line">       <span class="built_in">return</span> account;</div><div class="line">   &#125;</div><div class="line">   public void <span class="built_in">set</span>Elem1(A account)&#123;</div><div class="line">       this.account=account;</div><div class="line">   &#125;</div><div class="line">    public P <span class="function"><span class="title">getElem2</span></span>()&#123;</div><div class="line">       <span class="built_in">return</span> password;</div><div class="line">   &#125;</div><div class="line">    public void <span class="built_in">set</span>Elem2(P password)&#123;</div><div class="line">       this.password=password;</div><div class="line">   &#125;</div><div class="line">     public B <span class="function"><span class="title">getElem3</span></span>()&#123;</div><div class="line">       <span class="built_in">return</span> balance;</div><div class="line">   &#125;</div><div class="line">     public void <span class="built_in">set</span>Elem3(B balance)&#123;</div><div class="line">       this.balance=balance;</div><div class="line">   &#125;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        ATMDBCon.JDBCon();</div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> <code style="color: #FF0033">2.JDBC连接数据库sql server</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">import java.sql.*;</div><div class="line">import java.util.*;</div><div class="line"></div><div class="line">public class ATMDBCon &#123;</div><div class="line">    //创建数据库连接的方法(JDBC)</div><div class="line">    public static Connection <span class="function"><span class="title">JDBCon</span></span>()&#123;</div><div class="line">        try&#123;</div><div class="line">            //--2 加载驱动程序</div><div class="line">              Class.forName(<span class="string">"com.microsoft.sqlserver.jdbc.SQLServerDriver"</span>);</div><div class="line">            // --3 创建连接</div><div class="line">              String url=<span class="string">"jdbc:sqlserver://localhost:1433; databaseName=ATMDB"</span>;</div><div class="line">              Connection conn=DriverManager.getConnection(url,<span class="string">"sa"</span>,<span class="string">""</span>);</div><div class="line">              System.out.println(<span class="string">"数据库连接成功"</span>);</div><div class="line">              <span class="built_in">return</span> conn;</div><div class="line">        &#125;catch(ClassNotFoundException ex)&#123;</div><div class="line">            System.out.println(<span class="string">"数据库驱动程序找不到"</span>);</div><div class="line">            <span class="built_in">return</span> null;</div><div class="line">        &#125;catch(SQLException ex)&#123;</div><div class="line">            System.out.println(<span class="string">"数据库连接失败"</span>);</div><div class="line">            ex.printStackTrace();</div><div class="line">            <span class="built_in">return</span> null;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">  //--查询数据的方法</div><div class="line">    public static Vector queryData(String sql)&#123;</div><div class="line">        Connection conn=JDBCon();</div><div class="line">        try&#123;</div><div class="line">            //创建会话对象</div><div class="line">            Statement stmt=conn.createStatement();</div><div class="line">            ResultSet rs=stmt.executeQuery(sql);</div><div class="line">            Vector data=new Vector();</div><div class="line">            <span class="keyword">while</span>(rs.next())&#123;</div><div class="line">                String account=rs.getObject(1).toString();</div><div class="line">                String password=rs.getObject(2).toString();</div><div class="line">                String balance=rs.getObject(3).toString();</div><div class="line">                ATM&lt;String,String,String&gt; stu=new ATM&lt;String,String,String&gt;(account,password,balance);</div><div class="line">                data.add(stu);</div><div class="line">            &#125;</div><div class="line">            //关闭</div><div class="line">            rs.close();</div><div class="line">            stmt.close();</div><div class="line">            conn.close();</div><div class="line">            <span class="built_in">return</span> data;</div><div class="line">        &#125;catch(SQLException ex)&#123;</div><div class="line">            System.out.println(<span class="string">"数据访问失败"</span>);</div><div class="line">            ex.printStackTrace();</div><div class="line">            <span class="built_in">return</span> null;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    //--更新数据的方法(insert,update,delete)</div><div class="line">    public static boolean updateData(String sql)&#123;</div><div class="line">        Connection conn=JDBCon();</div><div class="line">        try&#123;</div><div class="line">            //创建会话对象</div><div class="line">            Statement stmt=conn.createStatement();</div><div class="line">            //执行SQL语句，返回受影响的行数</div><div class="line">            int r=stmt.executeUpdate(sql);</div><div class="line">            stmt.close();</div><div class="line">            conn.close();</div><div class="line">            <span class="keyword">if</span>(r&gt;0)&#123;</div><div class="line">                <span class="built_in">return</span> <span class="literal">true</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;catch(SQLException ex)&#123;</div><div class="line">            System.out.println(<span class="string">"数据更新失败"</span>);</div><div class="line">            ex.printStackTrace();</div><div class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> <code style="color: #FF0033">3.获取数据库登陆信息~如果账号密码都为123456则登陆成功</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// TODO add your handling code here:</div><div class="line">account=txtAccount.getText();</div><div class="line">password=txtPassword.getText();</div><div class="line">data=ATMDBCon.queryData(<span class="string">"select * from userinfo"</span>);</div><div class="line">//ATM atm=(ATM)data.get(0);</div><div class="line"> ATM&lt;String,String,String&gt; atm=(ATM&lt;String,String,String&gt;)data.get(0);</div><div class="line"><span class="keyword">if</span>(account.equals(atm.getElem1())&amp;&amp;password.equals(atm.getElem2()))&#123;</div><div class="line">     ATMDemo frame=new ATMDemo();</div><div class="line">     frame.setVisible(<span class="literal">true</span>);</div><div class="line">     this.dispose();</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    JOptionPane.showMessageDialog(null,<span class="string">"账号或密码错误！"</span>,<span class="string">"系统提示"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">    txtAccount.setText(<span class="string">""</span>);</div><div class="line">    txtPassword.setText(<span class="string">""</span>);</div><div class="line">    txtAccount.requestFocus();//选中密码框</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> <code style="color: #FF0033">4.获取数据库余额</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> data=ATMDBCon.queryData(<span class="string">"select * from userinfo"</span>);</div><div class="line"> ATM&lt;String,String,String&gt; atm=(ATM&lt;String,String,String&gt;)data.get(0);</div><div class="line">// ATM atm=(ATM)data.get(0);   </div><div class="line"> JOptionPane.showMessageDialog(null,<span class="string">"Your current account balance is "</span>+atm.getElem3()+<span class="string">" yuan"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div></pre></td></tr></table></figure></p>
+<p> <code style="color: #FF0033">5.按照存款的要求进行存款</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">String str=txtgetdeposit.getText();</div><div class="line">      data=ATMDBCon.queryData(<span class="string">"select * from userinfo"</span>);</div><div class="line">      //ATM atm=(ATM)data.get(0);</div><div class="line">       ATM&lt;String,String,String&gt; atm=(ATM&lt;String,String,String&gt;)data.get(0);</div><div class="line">      int j=Integer.parseInt(atm.getElem3());</div><div class="line">      int i;</div><div class="line">      String sql=<span class="string">""</span>;</div><div class="line">      <span class="keyword">if</span>(str!=null)&#123;</div><div class="line">           try&#123;</div><div class="line">               i=Integer.parseInt(str);</div><div class="line">               <span class="keyword">if</span>(i%100==0 &amp;&amp; i&gt;0)&#123;</div><div class="line">                  int k=i+j;  </div><div class="line">                  sql=<span class="string">"update userinfo SET balance="</span>+k+<span class="string">""</span>;</div><div class="line">                  ATMDBCon.updateData(sql);</div><div class="line">                  JOptionPane.showMessageDialog(null,<span class="string">"Deposit success"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">                  dispose();</div><div class="line">                  ATMDemo frame=new ATMDemo();</div><div class="line">                  frame.setVisible(<span class="literal">true</span>);</div><div class="line">               &#125;<span class="keyword">else</span>&#123;</div><div class="line">                   JOptionPane.showMessageDialog(null,<span class="string">"Please enter an integer of 100!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">                   txtgetdeposit.setText(<span class="string">""</span>);</div><div class="line">               &#125;</div><div class="line">           &#125;catch(NumberFormatException e)&#123;</div><div class="line">               JOptionPane.showMessageDialog(null,<span class="string">"Please enter the correct deposit amount!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">           &#125;      </div><div class="line">      &#125;</div></pre></td></tr></table></figure></p>
+<p> <code style="color: #FF0033">6.按照取款的要求进行取款</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">String str=txtwithdraw.getText();</div><div class="line">data=ATMDBCon.queryData(<span class="string">"select * from userinfo"</span>);</div><div class="line">//ATM atm=(ATM)data.get(0);</div><div class="line"> ATM&lt;String,String,String&gt; atm=(ATM&lt;String,String,String&gt;)data.get(0);</div><div class="line">int j=Integer.parseInt(atm.getElem3());</div><div class="line">int i;</div><div class="line">String sql=<span class="string">""</span>;</div><div class="line"><span class="keyword">if</span>(str!=null)&#123;</div><div class="line">    try&#123;</div><div class="line">        i=Integer.parseInt(str);</div><div class="line">        <span class="keyword">if</span>(i&lt;=5000 &amp;&amp; i&lt;=j &amp;&amp; i%100==0 &amp;&amp; i&gt;0)&#123;</div><div class="line">            int k=j-i;</div><div class="line">            sql=<span class="string">"update userinfo SET balance="</span>+k+<span class="string">""</span>;</div><div class="line">            ATMDBCon.updateData(sql);</div><div class="line">            JOptionPane.showMessageDialog(null,<span class="string">"Withdraw success"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">            ATMDemo frame=new ATMDemo();</div><div class="line">            frame.setVisible(<span class="literal">true</span>);</div><div class="line">            dispose();</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            JOptionPane.showMessageDialog(null,<span class="string">"Please enter an integer of 100 or below 5000 or less than total amount!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">            txtwithdraw.setText(<span class="string">""</span>);</div></pre></td></tr></table></figure></p>
+<p> <code style="color: #FF0033">7.修改密码操作</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line">String oldpas=txtoldpas.getText();</div><div class="line">String newpas=txtnewpas.getText();</div><div class="line">String newpas1=txtnewpas1.getText();</div><div class="line">String k;</div><div class="line">data=ATMDBCon.queryData(<span class="string">"select * from userinfo"</span>);</div><div class="line">//ATM atm=(ATM)data.get(0);</div><div class="line"> ATM&lt;String,String,String&gt; atm=(ATM&lt;String,String,String&gt;)data.get(0);</div><div class="line"> String m=atm.getElem1();</div><div class="line"> String n=atm.getElem2();</div><div class="line"> </div><div class="line">String sql=<span class="string">""</span>;</div><div class="line"><span class="keyword">if</span>(oldpas!=null &amp;&amp; newpas!=null &amp;&amp; newpas1 !=null)&#123;</div><div class="line">    <span class="keyword">if</span>(oldpas.equals(atm.getElem2()))&#123;</div><div class="line">        try&#123;</div><div class="line">            int i=Integer.parseInt(newpas);</div><div class="line">            int j=Integer.parseInt(newpas1);</div><div class="line">            <span class="keyword">if</span>(i==j)&#123;</div><div class="line">                <span class="keyword">if</span>(i!=Integer.parseInt(oldpas) &amp;&amp; i&lt;999999 &amp;&amp;i&gt;99999 &amp;&amp; i!=111111 &amp;&amp; i!=22222 &amp;&amp; i!=333333 &amp;&amp; i!=444444 &amp;&amp; i!=555555 &amp;&amp; i!= 666666 &amp;&amp; i!= 777777 &amp;&amp; i!= 888888)&#123;  </div><div class="line">                    k=String.valueOf(j);</div><div class="line">                    sql=<span class="string">"update userinfo SET password='"</span>+k+<span class="string">"'"</span>;</div><div class="line">                    ATMDBCon.updateData(sql);</div><div class="line">                    JOptionPane.showMessageDialog(null,<span class="string">"Modify password success!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">                    try&#123;</div><div class="line">                            FileOutputStream f=new FileOutputStream(<span class="string">"D:\\info.txt"</span>);//构造FileInputStream对象</div><div class="line">                            ObjectOutputStream out=new ObjectOutputStream(f);//构造ObjectInputStream对象</div><div class="line">                            modifypas stu=new modifypas(atm.getElem1(),n,k);//使用ObjectInputStream对象的<span class="built_in">read</span>Obect（）方法进行序列化</div><div class="line">                            out.writeObject(stu);//使用ObjectOutStream对象的writeObject（）方法进行序列化</div><div class="line">                            out.close();//关闭ObjectOutSteram对象</div><div class="line">                            f.close();//关闭FileOutputStream对象</div><div class="line">                        &#125;catch(IOException e)&#123;</div><div class="line">                        e.printStackTrace();</div><div class="line">                        &#125;</div><div class="line">                     System.out.println(<span class="string">"序列化完毕"</span>);</div><div class="line">      		try&#123;</div><div class="line">                            FileInputStream f=new FileInputStream(<span class="string">"D:\\info.txt"</span>);//构造FileInputStream对象</div><div class="line">                            ObjectInputStream <span class="keyword">in</span> = new ObjectInputStream(f);//构造ObjectInputStream对象</div><div class="line">                            modifypas stu1=(modifypas)in.readObject();//使用ObjectInputStream对象的<span class="built_in">read</span>Obect（）方法进行反序列化</div><div class="line">                            System.out.println(stu1.toString());</div><div class="line">                            //System.out.println(<span class="string">"----------------------------"</span>);</div><div class="line">                            //System.out.println(<span class="string">"卡号："</span>+stu1.account1+<span class="string">";密码："</span>+stu1.password1+<span class="string">";修改后的密码："</span>+stu1.password2);</div><div class="line">                            in.close();//关闭ObjectOutSteram对象</div><div class="line">                            f.close();//关闭FileOutputStream对象</div><div class="line">                           &#125;catch(ClassNotFoundException e)&#123;</div><div class="line">                                    e.printStackTrace();</div><div class="line">                           &#125;catch(IOException e)&#123;</div><div class="line">                                    e.printStackTrace();</div><div class="line">                           &#125;</div><div class="line">                    System.out.println(<span class="string">"反序列化完毕"</span>);</div><div class="line">                    dispose();</div><div class="line">                    Login frame=new Login();</div><div class="line">                    frame.setVisible(<span class="literal">true</span>);</div><div class="line">                    //<span class="built_in">set</span>DefaultCloseOperation(ATMDemo.DISPOSE_ON_CLOSE)</div><div class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(i==Integer.parseInt(oldpas))&#123;</div><div class="line">                    JOptionPane.showMessageDialog(null,<span class="string">"Old and New passwords are same!!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">                    txtoldpas.setText(<span class="string">""</span>);</div><div class="line">                    txtnewpas.setText(<span class="string">""</span>);</div><div class="line">                    txtnewpas1.setText(<span class="string">""</span>);</div><div class="line">                    txtoldpas.requestFocus();</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    JOptionPane.showMessageDialog(null,<span class="string">"Password is not six or password identical!!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">                    txtoldpas.setText(<span class="string">""</span>);</div><div class="line">                    txtnewpas.setText(<span class="string">""</span>);</div><div class="line">                    txtnewpas1.setText(<span class="string">""</span>);</div><div class="line">                    txtoldpas.requestFocus();</div><div class="line">               &#125;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                JOptionPane.showMessageDialog(null,<span class="string">"Two input passwords are not the same!!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">                txtoldpas.setText(<span class="string">""</span>);</div><div class="line">                txtnewpas.setText(<span class="string">""</span>);</div><div class="line">                txtnewpas1.setText(<span class="string">""</span>);</div><div class="line">                txtoldpas.requestFocus();</div><div class="line">            &#125;</div><div class="line">        &#125;catch(NumberFormatException e)&#123;</div><div class="line">            JOptionPane.showMessageDialog(null,<span class="string">"Please enter a digital password!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">                txtoldpas.setText(<span class="string">""</span>);</div><div class="line">                txtnewpas.setText(<span class="string">""</span>);</div><div class="line">                txtnewpas1.setText(<span class="string">""</span>);</div><div class="line">                txtoldpas.requestFocus();</div><div class="line">        &#125;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">         JOptionPane.showMessageDialog(null,<span class="string">"Old Password error!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">                txtoldpas.setText(<span class="string">""</span>);</div><div class="line">                txtnewpas.setText(<span class="string">""</span>);</div><div class="line">                txtnewpas1.setText(<span class="string">""</span>);</div><div class="line">                txtoldpas.requestFocus();</div><div class="line">    &#125;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    JOptionPane.showMessageDialog(null,<span class="string">"Please input a password!"</span>,<span class="string">"information"</span>,JOptionPane.INFORMATION_MESSAGE);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> <code style="color: #FF0033">8.按回车登录事件</code>在构造函数处添加以下代码即可<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">      getRootPane().setDefaultButton(btnLogin);</div><div class="line">&lt;!-- btnLogin表示登陆按钮的名称，存取款修改密码类似 --&gt;</div></pre></td></tr></table></figure></p>
+<p> <code style="color: #FF0033">附上界面图</code><br> <div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="/uploads/atmnetpic.png"></div><div class="group-picture-column" style="width: 50%;"><img src="/uploads/atmnetpic1.png"></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/uploads/atmnetpic2.png"></div></div></div></div></p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>曾经有一个人，他在这里打了赏，几年后，TA年薪百万~~！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image1.png" alt="黄少鹏 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay-reward-image1.png" alt="黄少鹏 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/ATM/" rel="tag"># ATM</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/16/binarysearch/" rel="next" title="二分搜索技术">
+                <i class="fa fa-chevron-left"></i> 二分搜索技术
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/28/atmdemo/"
+           data-title="模拟银行ATM机" data-url="http://yoursite.com/2017/01/28/atmdemo/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/img_toux.png"
+               alt="黄少鹏" />
+          <p class="site-author-name" itemprop="name">黄少鹏</p>
+          <p class="site-description motion-element" itemprop="description">当你的才华还撑不起你的野心的时，<br />你就应该静下心来学习。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Superbsco" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/word.joku" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/supperbsco" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/1797112632?refer_flag=1001030101_&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/huang-shao-peng-87/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/2330479c3526" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟银行ATM机"><span class="nav-number">1.1.</span> <span class="nav-text">模拟银行ATM机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-使用文本命令行界面"><span class="nav-number">1.2.</span> <span class="nav-text">C++使用文本命令行界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#netbeans连接数据库可视化界面ATM"><span class="nav-number">1.3.</span> <span class="nav-text">netbeans连接数据库可视化界面ATM</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">黄少鹏</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+
+</div>
+
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feitianmai"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("9SdpuhAuXQVx8CfQLbO3hoLC-gzGzoHsz", "kPzSM5tVq5Nq8gamHCS8T6gQ");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+<!-- 背景动画 -->
+<!-- <script type="text/javascript" src="/js/src/particle.js"></script> -->
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
