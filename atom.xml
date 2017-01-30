@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-28T07:50:46.436Z</updated>
+  <updated>2017-01-30T14:37:31.799Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2017-1-30：河内之塔</title>
+    <link href="http://yoursite.com/2017/01/30/sf1/"/>
+    <id>http://yoursite.com/2017/01/30/sf1/</id>
+    <published>2017-01-30T13:09:57.000Z</published>
+    <updated>2017-01-30T14:37:31.799Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>河内之塔(Towers of Hanoi)是法国人M.Claus(Lucas)于1883年从泰国带至法国的，河内为越战时北越的首都，即现在的胡志明市；1883年法国数学家Edouard Lucas曾提及这个故事，据说创世纪时Benares有一座波罗教塔，是由三支钻石棒（Pag）所支撑，开始时神在第一根棒上放置64个由上至下依由小至大排列的金盘（Disc），并命令僧侣将所有的金盘从第一根石棒移至第三根石棒，且搬运过程中遵守大盘子在小盘子之下的原则，若每日仅搬一个盘子，则当盘子全数搬运完毕之时，此塔将毁损，而也就是世界末日来临之时。<a id="more"></a><br><code style="color: #FF0033">我们来把这个故事变成一个算法：</code><br> 把三个柱子标为ABC如果只有一个盘子时，将它直接搬到<code style="color: #FF0033">c</code>；当有两个盘子：<code style="color: #FF0033">A-&gt;B  A-&gt;C B-&gt;C</code>这三个步骤，当有三个盘子时：<code style="color: #FF0033">A-&gt;C A-&gt;B C-&gt;B A-&gt;C B-&gt;A B-&gt;C A-&gt;C</code>。如果有n个盘子，则移动完毕所需的次数为2^n-1。</p>
+<h2 id="C-算法代码"><a href="#C-算法代码" class="headerlink" title="C++算法代码"></a>C++算法代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line">using namespace std;</div><div class="line">void hanoi(int n, char A, char B, char C)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (n == 1)</div><div class="line">	&#123;</div><div class="line">		cout &lt;&lt; <span class="string">" Move "</span> &lt;&lt; n &lt;&lt; <span class="string">" from "</span> &lt;&lt; A &lt;&lt; <span class="string">" to "</span> &lt;&lt; C &lt;&lt; endl;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		hanoi(n - 1, A, C, B); //把A柱子上第N-1个盘子通过C放到B柱子上</div><div class="line">		cout &lt;&lt; <span class="string">" Move "</span> &lt;&lt; n &lt;&lt; <span class="string">" from "</span> &lt;&lt; A &lt;&lt; <span class="string">" to "</span> &lt;&lt; C &lt;&lt; endl;</div><div class="line">		hanoi(n - 1, B, A, C); //把B上所有盘子通过A放到C上</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()</div><div class="line">&#123;</div><div class="line">	cout &lt;&lt; <span class="string">"请输入盘子数量："</span> &lt;&lt; endl;</div><div class="line">	int n;</div><div class="line">	cin &gt;&gt; n;</div><div class="line">	hanoi(n, <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以n=3为例，解释hanoi(int n,char A,char B,char C)方法：</p>
+<ol>
+<li>执行hanoi（2，A，C，B）-&gt;执行hanoi（1，A，C，B）输出：<br>Move 1 from A to C</li>
+<li>n=2的时候执行完hanoi（2，A，C，B），执行cout &lt;&lt; “ Move “ &lt;&lt; n &lt;&lt; “ from “ &lt;&lt; A &lt;&lt; “ to “ &lt;&lt; C &lt;&lt; endl;输出：<br>Move 2 from A to B</li>
+<li>执行Hanoi(n - 1, B, A, C);这相当于Hanoi(1,C,A,B)相当于把C柱子上的1盘子放到B上，把A柱子上的最后一个盘子3放到C柱子上，输出：<br>Move 1 from C to B<br>Move 3 from A to C</li>
+<li>Hanoi(n - 1, B, A, C);上一个递归我们已经把n-1个盘子放到了B柱子上，这个方法就是把B柱子上的盘子放到C柱子上,也就是Hanoi(2,B,A,C)它再递归.<br>先调用Hanoi(n - 1, A, C, B); 这个时候 的A是B  B为C,C为A. 就是把B上的1盘子放到A柱子上,把B柱子上的2盘子放到C柱子上.输出：<br>Move 1 from B to A<br>Move 2 from B to C</li>
+<li>Hanoi(n - 1, B, A, C);也就是Hanoi(1,A,B,C);会把A柱子上的C盘子入到C柱子上去，输出：<br>Move 1 from A to C<br>总共7步。<hr>
+
+
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;河内之塔(Towers of Hanoi)是法国人M.Claus(Lucas)于1883年从泰国带至法国的，河内为越战时北越的首都，即现在的胡志明市；1883年法国数学家Edouard Lucas曾提及这个故事，据说创世纪时Benares有一座波罗教塔，是由三支钻石棒（Pag）所支撑，开始时神在第一根棒上放置64个由上至下依由小至大排列的金盘（Disc），并命令僧侣将所有的金盘从第一根石棒移至第三根石棒，且搬运过程中遵守大盘子在小盘子之下的原则，若每日仅搬一个盘子，则当盘子全数搬运完毕之时，此塔将毁损，而也就是世界末日来临之时。
+    
+    </summary>
+    
+      <category term="每日算法" scheme="http://yoursite.com/categories/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="河内之塔" scheme="http://yoursite.com/tags/%E6%B2%B3%E5%86%85%E4%B9%8B%E5%A1%94/"/>
+    
+  </entry>
   
   <entry>
     <title>模拟银行ATM机</title>
