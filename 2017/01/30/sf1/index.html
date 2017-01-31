@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/30/sf1/index.html">
 <meta property="og:site_name" content="Superb's blog">
 <meta property="og:description" content="前言河内之塔(Towers of Hanoi)是法国人M.Claus(Lucas)于1883年从泰国带至法国的，河内为越战时北越的首都，即现在的胡志明市；1883年法国数学家Edouard Lucas曾提及这个故事，据说创世纪时Benares有一座波罗教塔，是由三支钻石棒（Pag）所支撑，开始时神在第一根棒上放置64个由上至下依由小至大排列的金盘（Disc），并命令僧侣将所有的金盘从第一根石棒移至">
-<meta property="og:updated_time" content="2017-01-30T14:37:31.799Z">
+<meta property="og:updated_time" content="2017-01-31T14:00:10.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2017-1-30：河内之塔">
 <meta name="twitter:description" content="前言河内之塔(Towers of Hanoi)是法国人M.Claus(Lucas)于1883年从泰国带至法国的，河内为越战时北越的首都，即现在的胡志明市；1883年法国数学家Edouard Lucas曾提及这个故事，据说创世纪时Benares有一座波罗教塔，是由三支钻石棒（Pag）所支撑，开始时神在第一根棒上放置64个由上至下依由小至大排列的金盘（Disc），并命令僧侣将所有的金盘从第一根石棒移至">
@@ -428,7 +428,7 @@
 <li>n=2的时候执行完hanoi（2，A，C，B），执行cout &lt;&lt; “ Move “ &lt;&lt; n &lt;&lt; “ from “ &lt;&lt; A &lt;&lt; “ to “ &lt;&lt; C &lt;&lt; endl;输出：<br>Move 2 from A to B</li>
 <li>执行Hanoi(n - 1, B, A, C);这相当于Hanoi(1,C,A,B)相当于把C柱子上的1盘子放到B上，把A柱子上的最后一个盘子3放到C柱子上，输出：<br>Move 1 from C to B<br>Move 3 from A to C</li>
 <li>Hanoi(n - 1, B, A, C);上一个递归我们已经把n-1个盘子放到了B柱子上，这个方法就是把B柱子上的盘子放到C柱子上,也就是Hanoi(2,B,A,C)它再递归.<br>先调用Hanoi(n - 1, A, C, B); 这个时候 的A是B  B为C,C为A. 就是把B上的1盘子放到A柱子上,把B柱子上的2盘子放到C柱子上.输出：<br>Move 1 from B to A<br>Move 2 from B to C</li>
-<li>Hanoi(n - 1, B, A, C);也就是Hanoi(1,A,B,C);会把A柱子上的C盘子入到C柱子上去，输出：<br>Move 1 from A to C<br>总共7步。<hr>
+<li>Hanoi(n - 1, B, A, C);也就是Hanoi(1,A,B,C);会把A柱子上的1盘子入到C柱子上去，输出：<br>Move 1 from A to C<br>总共7步。<hr>
 
 
 </li>
