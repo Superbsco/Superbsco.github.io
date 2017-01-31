@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-30T14:37:31.799Z</updated>
+  <updated>2017-01-31T13:48:55.891Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2017-1-31：斐波那契数列</title>
+    <link href="http://yoursite.com/2017/01/31/sf2/"/>
+    <id>http://yoursite.com/2017/01/31/sf2/</id>
+    <published>2017-01-31T13:30:34.000Z</published>
+    <updated>2017-01-31T13:48:55.891Z</updated>
+    
+    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">我喜欢北方，但我从没去过北方，<br>就像我爱南方，舍不得离开南方一样。<br>所有求之不得的东西，我都舍不得一下子用完，<br>没去的地方留着，没见的人，等着</blockquote></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code style="color: #FF0033">题目：定义Fibonacci数列如下：<br>f(0)=0;<br>f(1)=1;<br>f(n)=f(n-1)+f(n-2) n&gt;=2;<br>输入n，用最快的方法求该数列的第n项。</code><a id="more"></a></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p><code style="color: #FF0033">Fibonacci数列如下：1，1，2，3，5，8，13，21，34，55，89…</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line">using namespace std;</div><div class="line">long Fibonacci(int n)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span>(n == 0)</div><div class="line">		<span class="built_in">return</span> 0;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(n == 1)</div><div class="line">		<span class="built_in">return</span> 1;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(n &gt; 1)</div><div class="line">		<span class="built_in">return</span> Fibonacci(n - 1) + Fibonacci(n - 2);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="built_in">return</span> -1;</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>()</div><div class="line">&#123;</div><div class="line">	cout &lt;&lt; <span class="string">"输入n值："</span> &lt;&lt; endl;</div><div class="line">	int n;</div><div class="line">	cin &gt;&gt; n;</div><div class="line">	cout&lt;&lt;Fibonacci(n)&lt;&lt;endl;</div><div class="line">	//system(<span class="string">"pause"</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;我喜欢北方，但我从没去过北方，&lt;br&gt;就像我爱南方，舍不得离开南方一样。&lt;br&gt;所有求之不得的东西，我都舍不得一下子用完，&lt;br&gt;没去的地方留着，没见的人，等着&lt;/blockquote&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;&lt;code style=&quot;color: #FF0033&quot;&gt;题目：定义Fibonacci数列如下：&lt;br&gt;f(0)=0;&lt;br&gt;f(1)=1;&lt;br&gt;f(n)=f(n-1)+f(n-2) n&amp;gt;=2;&lt;br&gt;输入n，用最快的方法求该数列的第n项。&lt;/code&gt;
+    
+    </summary>
+    
+      <category term="每日算法" scheme="http://yoursite.com/categories/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="费氏数列" scheme="http://yoursite.com/tags/%E8%B4%B9%E6%B0%8F%E6%95%B0%E5%88%97/"/>
+    
+  </entry>
   
   <entry>
     <title>2017-1-30：河内之塔</title>
@@ -87,9 +115,9 @@
       <category term="ATM" scheme="http://yoursite.com/categories/ATM/"/>
     
     
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
-    
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
     
       <category term="ATM" scheme="http://yoursite.com/tags/ATM/"/>
     
@@ -119,9 +147,9 @@
       <category term="算法" scheme="http://yoursite.com/categories/algorithm/"/>
     
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   

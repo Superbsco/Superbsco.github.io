@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[2017-1-31：斐波那契数列]]></title>
+      <url>%2F2017%2F01%2F31%2Fsf2%2F</url>
+      <content type="text"><![CDATA[我喜欢北方，但我从没去过北方，就像我爱南方，舍不得离开南方一样。所有求之不得的东西，我都舍不得一下子用完，没去的地方留着，没见的人，等着 前言题目：定义Fibonacci数列如下：f(0)=0;f(1)=1;f(n)=f(n-1)+f(n-2) n&gt;=2;输入n，用最快的方法求该数列的第n项。 代码Fibonacci数列如下：1，1，2，3，5，8，13，21，34，55，89…12345678910111213141516171819202122#include &lt;iostream&gt;using namespace std;long Fibonacci(int n)&#123; if(n == 0) return 0; else if(n == 1) return 1; else if(n &gt; 1) return Fibonacci(n - 1) + Fibonacci(n - 2); else return -1;&#125;int main()&#123; cout &lt;&lt; "输入n值：" &lt;&lt; endl; int n; cin &gt;&gt; n; cout&lt;&lt;Fibonacci(n)&lt;&lt;endl; //system("pause"); return 0;&#125;]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[2017-1-30：河内之塔]]></title>
       <url>%2F2017%2F01%2F30%2Fsf1%2F</url>
       <content type="text"><![CDATA[前言河内之塔(Towers of Hanoi)是法国人M.Claus(Lucas)于1883年从泰国带至法国的，河内为越战时北越的首都，即现在的胡志明市；1883年法国数学家Edouard Lucas曾提及这个故事，据说创世纪时Benares有一座波罗教塔，是由三支钻石棒（Pag）所支撑，开始时神在第一根棒上放置64个由上至下依由小至大排列的金盘（Disc），并命令僧侣将所有的金盘从第一根石棒移至第三根石棒，且搬运过程中遵守大盘子在小盘子之下的原则，若每日仅搬一个盘子，则当盘子全数搬运完毕之时，此塔将毁损，而也就是世界末日来临之时。我们来把这个故事变成一个算法： 把三个柱子标为ABC如果只有一个盘子时，将它直接搬到c；当有两个盘子：A-&gt;B A-&gt;C B-&gt;C这三个步骤，当有三个盘子时：A-&gt;C A-&gt;B C-&gt;B A-&gt;C B-&gt;A B-&gt;C A-&gt;C。如果有n个盘子，则移动完毕所需的次数为2^n-1。 C++算法代码123456789101112131415161718192021222324#include &lt;iostream&gt;using namespace std;void hanoi(int n, char A, char B, char C)&#123; if (n == 1) &#123; cout &lt;&lt; " Move " &lt;&lt; n &lt;&lt; " from " &lt;&lt; A &lt;&lt; " to " &lt;&lt; C &lt;&lt; endl; &#125; else &#123; hanoi(n - 1, A, C, B); //把A柱子上第N-1个盘子通过C放到B柱子上 cout &lt;&lt; " Move " &lt;&lt; n &lt;&lt; " from " &lt;&lt; A &lt;&lt; " to " &lt;&lt; C &lt;&lt; endl; hanoi(n - 1, B, A, C); //把B上所有盘子通过A放到C上 &#125;&#125;int main()&#123; cout &lt;&lt; "请输入盘子数量：" &lt;&lt; endl; int n; cin &gt;&gt; n; hanoi(n, 'A', 'B', 'C'); return 0;&#125; 以n=3为例，解释hanoi(int n,char A,char B,char C)方法： 执行hanoi（2，A，C，B）-&gt;执行hanoi（1，A，C，B）输出：Move 1 from A to C n=2的时候执行完hanoi（2，A，C，B），执行cout &lt;&lt; “ Move “ &lt;&lt; n &lt;&lt; “ from “ &lt;&lt; A &lt;&lt; “ to “ &lt;&lt; C &lt;&lt; endl;输出：Move 2 from A to B 执行Hanoi(n - 1, B, A, C);这相当于Hanoi(1,C,A,B)相当于把C柱子上的1盘子放到B上，把A柱子上的最后一个盘子3放到C柱子上，输出：Move 1 from C to BMove 3 from A to C Hanoi(n - 1, B, A, C);上一个递归我们已经把n-1个盘子放到了B柱子上，这个方法就是把B柱子上的盘子放到C柱子上,也就是Hanoi(2,B,A,C)它再递归.先调用Hanoi(n - 1, A, C, B); 这个时候 的A是B B为C,C为A. 就是把B上的1盘子放到A柱子上,把B柱子上的2盘子放到C柱子上.输出：Move 1 from B to AMove 2 from B to C Hanoi(n - 1, B, A, C);也就是Hanoi(1,A,B,C);会把A柱子上的C盘子入到C柱子上去，输出：Move 1 from A to C总共7步。]]></content>
