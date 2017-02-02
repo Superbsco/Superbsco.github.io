@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-02T14:05:14.026Z</updated>
+  <updated>2017-02-02T14:06:23.426Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://yoursite.com/2017/02/02/sf4/"/>
     <id>http://yoursite.com/2017/02/02/sf4/</id>
     <published>2017-02-02T13:58:19.000Z</published>
-    <updated>2017-02-02T14:05:14.026Z</updated>
+    <updated>2017-02-02T14:06:23.426Z</updated>
     
     <content type="html"><![CDATA[<p><blockquote class="blockquote-center">逃避责任就会带来轻松，可那恰恰就是“生命不能承受之轻”啊</blockquote></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>三色旗的问题最早由E.W.Dijkstra所提出，他所使用的用语为Dutch Nation Flag(Dijkstra为荷兰人)，而多数的作者则使用Three-Color Flag来称之。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>三色旗的问题最早由E.W.Dijkstra所提出，他所使用的用语为Dutch Nation Flag(Dijkstra为荷兰人)，而多数的作者则使用Three-Color Flag来称之。<a id="more"></a></p>
 <p>假设有一条绳子，上面有红、白、蓝三种颜色的旗子，起初绳子上的旗子颜色并没有顺序，您希望将之分类，并排列为蓝、白、红的顺序，要如何移动次数才会最少，注意您只能在绳子上进行这个动作，而且一次只能调换两个旗子。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;stdio.h&gt;</span></div><div class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></div><div class="line"><span class="comment">#include &lt;string.h&gt;</span></div><div class="line"></div><div class="line"><span class="comment">#define BLUE 'b'</span></div><div class="line"><span class="comment">#define WHITE 'w'</span></div><div class="line"><span class="comment">#define RED 'r'</span></div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()</div><div class="line">&#123;</div><div class="line">	char color[] = &#123; <span class="string">'r'</span>,<span class="string">'w'</span>,<span class="string">'b'</span>,<span class="string">'w'</span> ,<span class="string">'w'</span>,<span class="string">'b'</span> ,<span class="string">'r'</span>,<span class="string">'b'</span>,</div><div class="line">		<span class="string">'w'</span>,<span class="string">'r'</span>,<span class="string">'\0'</span> &#125;;//随机定义10种旗子颜色</div><div class="line">	int wFlag = 0;</div><div class="line">	int bFlag = 0;</div><div class="line">	int rFlag = strlen(color) - 1;</div><div class="line">	int i;</div><div class="line">	<span class="keyword">for</span> (i = 0; i &lt; strlen(color); i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>, color[i]);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	<span class="keyword">while</span> (wFlag &lt;= rFlag)</div><div class="line">	&#123;//一开始时未处理的r指针处于最后一个旗子位子，当r的索引数减</div><div class="line">		//至少于w的索引数时，表示接下来的旗子就都是红色了，此时就可以结束移动。</div><div class="line">		<span class="keyword">if</span> (color[wFlag] == WHITE)</div><div class="line">		&#123;//如果图中w所在的位置为白色，则w+1，表示未处理的部份移至至白色群组。</div><div class="line">			wFlag++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (color[wFlag] == BLUE)</div><div class="line">		&#123;//如果w部份为蓝色，则b与w的元素对调，而b与w必须各+1，表示两个群组都多了一个元素</div><div class="line">			char temp1;</div><div class="line">			temp1 = color[bFlag];</div><div class="line">			color[bFlag] = color[wFlag];</div><div class="line">			color[wFlag] = temp1;</div><div class="line">			bFlag++; wFlag++;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;//如果w所在的位置是红色，则将w与r交换，但r要减1，表示未处理的部份减1。</div><div class="line">			<span class="keyword">while</span> (wFlag &lt; rFlag &amp;&amp; color[rFlag] == RED)</div><div class="line">			&#123;</div><div class="line">				rFlag--;</div><div class="line">			&#125;</div><div class="line">			char temp;</div><div class="line">			temp = color[rFlag];</div><div class="line">			color[rFlag] = color[wFlag];</div><div class="line">			color[wFlag] = temp;</div><div class="line">			rFlag--;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> ( i = 0; i &lt; strlen(color); i++)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>, color[i]);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <hr>]]></content>
@@ -31,7 +31,7 @@
     <summary type="html">
     
       &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;逃避责任就会带来轻松，可那恰恰就是“生命不能承受之轻”啊&lt;/blockquote&gt;&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;三色旗的问题最早由E.W.Dijkstra所提出，他所使用的用语为Dutch Nation Flag(Dijkstra为荷兰人)，而多数的作者则使用Three-Color Flag来称之。
     
     </summary>
     
@@ -115,9 +115,9 @@
       <category term="随手写作" scheme="http://yoursite.com/categories/%E9%9A%8F%E6%89%8B%E5%86%99%E4%BD%9C/"/>
     
     
-      <category term="随手写作" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%89%8B%E5%86%99%E4%BD%9C/"/>
-    
       <category term="文章" scheme="http://yoursite.com/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="随手写作" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%89%8B%E5%86%99%E4%BD%9C/"/>
     
   </entry>
   
@@ -769,9 +769,9 @@ int <span class="function"><span class="title">main</span></span>()
       <category term="test" scheme="http://yoursite.com/categories/test/"/>
     
     
-      <category term="文章" scheme="http://yoursite.com/tags/%E6%96%87%E7%AB%A0/"/>
-    
       <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="文章" scheme="http://yoursite.com/tags/%E6%96%87%E7%AB%A0/"/>
     
       <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
     
