@@ -391,21 +391,14 @@
     <link href="http://yoursite.com/2017/01/30/sf1/"/>
     <id>http://yoursite.com/2017/01/30/sf1/</id>
     <published>2017-01-30T13:09:57.000Z</published>
-    <updated>2017-01-31T14:00:10.701Z</updated>
+    <updated>2017-02-08T11:23:18.416Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>河内之塔(Towers of Hanoi)是法国人M.Claus(Lucas)于1883年从泰国带至法国的，河内为越战时北越的首都，即现在的胡志明市；1883年法国数学家Edouard Lucas曾提及这个故事，据说创世纪时Benares有一座波罗教塔，是由三支钻石棒（Pag）所支撑，开始时神在第一根棒上放置64个由上至下依由小至大排列的金盘（Disc），并命令僧侣将所有的金盘从第一根石棒移至第三根石棒，且搬运过程中遵守大盘子在小盘子之下的原则，若每日仅搬一个盘子，则当盘子全数搬运完毕之时，此塔将毁损，而也就是世界末日来临之时。<a id="more"></a><br><code style="color: #FF0033">我们来把这个故事变成一个算法：</code><br> 把三个柱子标为ABC如果只有一个盘子时，将它直接搬到<code style="color: #FF0033">c</code>；当有两个盘子：<code style="color: #FF0033">A-&gt;B  A-&gt;C B-&gt;C</code>这三个步骤，当有三个盘子时：<code style="color: #FF0033">A-&gt;C A-&gt;B C-&gt;B A-&gt;C B-&gt;A B-&gt;C A-&gt;C</code>。如果有n个盘子，则移动完毕所需的次数为2^n-1。</p>
 <h2 id="C-算法代码"><a href="#C-算法代码" class="headerlink" title="C++算法代码"></a>C++算法代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;</span></div><div class="line">using namespace std;</div><div class="line">void hanoi(int n, char A, char B, char C)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (n == 1)</div><div class="line">	&#123;</div><div class="line">		cout &lt;&lt; <span class="string">" Move "</span> &lt;&lt; n &lt;&lt; <span class="string">" from "</span> &lt;&lt; A &lt;&lt; <span class="string">" to "</span> &lt;&lt; C &lt;&lt; endl;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		hanoi(n - 1, A, C, B); //把A柱子上第N-1个盘子通过C放到B柱子上</div><div class="line">		cout &lt;&lt; <span class="string">" Move "</span> &lt;&lt; n &lt;&lt; <span class="string">" from "</span> &lt;&lt; A &lt;&lt; <span class="string">" to "</span> &lt;&lt; C &lt;&lt; endl;</div><div class="line">		hanoi(n - 1, B, A, C); //把B上所有盘子通过A放到C上</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()</div><div class="line">&#123;</div><div class="line">	cout &lt;&lt; <span class="string">"请输入盘子数量："</span> &lt;&lt; endl;</div><div class="line">	int n;</div><div class="line">	cin &gt;&gt; n;</div><div class="line">	hanoi(n, <span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以n=3为例，解释hanoi(int n,char A,char B,char C)方法：</p>
-<ol>
-<li>执行hanoi（2，A，C，B）-&gt;执行hanoi（1，A，C，B）输出：<br>Move 1 from A to C</li>
-<li>n=2的时候执行完hanoi（2，A，C，B），执行cout &lt;&lt; “ Move “ &lt;&lt; n &lt;&lt; “ from “ &lt;&lt; A &lt;&lt; “ to “ &lt;&lt; C &lt;&lt; endl;输出：<br>Move 2 from A to B</li>
-<li>执行Hanoi(n - 1, B, A, C);这相当于Hanoi(1,C,A,B)相当于把C柱子上的1盘子放到B上，把A柱子上的最后一个盘子3放到C柱子上，输出：<br>Move 1 from C to B<br>Move 3 from A to C</li>
-<li>Hanoi(n - 1, B, A, C);上一个递归我们已经把n-1个盘子放到了B柱子上，这个方法就是把B柱子上的盘子放到C柱子上,也就是Hanoi(2,B,A,C)它再递归.<br>先调用Hanoi(n - 1, A, C, B); 这个时候 的A是B  B为C,C为A. 就是把B上的1盘子放到A柱子上,把B柱子上的2盘子放到C柱子上.输出：<br>Move 1 from B to A<br>Move 2 from B to C</li>
-<li>Hanoi(n - 1, B, A, C);也就是Hanoi(1,A,B,C);会把A柱子上的1盘子入到C柱子上去，输出：<br>Move 1 from A to C<br>总共7步。<hr>
+<p><code style="color: #FF0033">以n=3为例，解释hanoi(int n,char A,char B,char C)方法：</code><br> <div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="/uploads/hanoi.png"></div></div><div class="group-picture-row"></div></div></div></p>
+<hr>
 
 
-</li>
-</ol>
 ]]></content>
     
     <summary type="html">
@@ -465,36 +458,6 @@
   </entry>
   
   <entry>
-    <title>二分搜索技术</title>
-    <link href="http://yoursite.com/2017/01/16/binarysearch/"/>
-    <id>http://yoursite.com/2017/01/16/binarysearch/</id>
-    <published>2017-01-16T08:14:58.000Z</published>
-    <updated>2017-02-08T03:08:55.632Z</updated>
-    
-    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">去不了的地方叫远方，回不去的是故乡~</blockquote></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>二分搜索技术是算法里面最简单的查找一个数所在位置的算法。</p>
-<h2 id="二分搜索技术"><a href="#二分搜索技术" class="headerlink" title="二分搜索技术"></a>二分搜索技术</h2><h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。<br>在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).<br><a id="more"></a></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> <code style="color: #FF0033">此代码在VS2015上正常运行~</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;          </span></div><div class="line">using namespace std;</div><div class="line">template&lt;class Type&gt;            //在已经排好序的a[0]~a[n-1]当中搜索x</div><div class="line">int BinarySearch(Type a[], const Type&amp;x, int n)&#123;</div><div class="line">	int left = 0;</div><div class="line">	int right = n - 1;</div><div class="line">	<span class="keyword">while</span> (left&lt;=right)</div><div class="line">	&#123;</div><div class="line">		int middle = (left + right) / 2;</div><div class="line">		<span class="keyword">if</span> (x==a[middle])</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">return</span> middle;//返回x所在数组a的位置</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (x&gt;a[middle])</div><div class="line">		&#123;</div><div class="line">			left = middle + 1;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			right = middle - 1;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> -1;//如果不存在，返回-1</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">	char m = 4;</div><div class="line">	//cout &lt;&lt; m&lt;&lt;endl;</div><div class="line">	char y[5] = &#123; 1,2,3,4&#125;;</div><div class="line">	int w=4;</div><div class="line">	w = BinarySearch(y, m, w);</div><div class="line">	cout &lt;&lt; w&lt;&lt;endl;</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<hr>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;去不了的地方叫远方，回不去的是故乡~&lt;/blockquote&gt;&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;二分搜索技术是算法里面最简单的查找一个数所在位置的算法。&lt;/p&gt;
-&lt;h2 id=&quot;二分搜索技术&quot;&gt;&lt;a href=&quot;#二分搜索技术&quot; class=&quot;headerlink&quot; title=&quot;二分搜索技术&quot;&gt;&lt;/a&gt;二分搜索技术&lt;/h2&gt;&lt;h3 id=&quot;复杂度&quot;&gt;&lt;a href=&quot;#复杂度&quot; class=&quot;headerlink&quot; title=&quot;复杂度&quot;&gt;&lt;/a&gt;复杂度&lt;/h3&gt;&lt;p&gt;每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。&lt;br&gt;在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).&lt;br&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/algorithm/"/>
-    
-    
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
-    
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java仿QQ聊天实现</title>
     <link href="http://yoursite.com/2017/01/16/qq/"/>
     <id>http://yoursite.com/2017/01/16/qq/</id>
@@ -523,6 +486,36 @@
       <category term="qq" scheme="http://yoursite.com/tags/qq/"/>
     
       <category term="网络编程" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二分搜索技术</title>
+    <link href="http://yoursite.com/2017/01/16/binarysearch/"/>
+    <id>http://yoursite.com/2017/01/16/binarysearch/</id>
+    <published>2017-01-16T08:14:58.000Z</published>
+    <updated>2017-02-08T03:08:55.632Z</updated>
+    
+    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">去不了的地方叫远方，回不去的是故乡~</blockquote></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>二分搜索技术是算法里面最简单的查找一个数所在位置的算法。</p>
+<h2 id="二分搜索技术"><a href="#二分搜索技术" class="headerlink" title="二分搜索技术"></a>二分搜索技术</h2><h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。<br>在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).<br><a id="more"></a></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> <code style="color: #FF0033">此代码在VS2015上正常运行~</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;          </span></div><div class="line">using namespace std;</div><div class="line">template&lt;class Type&gt;            //在已经排好序的a[0]~a[n-1]当中搜索x</div><div class="line">int BinarySearch(Type a[], const Type&amp;x, int n)&#123;</div><div class="line">	int left = 0;</div><div class="line">	int right = n - 1;</div><div class="line">	<span class="keyword">while</span> (left&lt;=right)</div><div class="line">	&#123;</div><div class="line">		int middle = (left + right) / 2;</div><div class="line">		<span class="keyword">if</span> (x==a[middle])</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">return</span> middle;//返回x所在数组a的位置</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (x&gt;a[middle])</div><div class="line">		&#123;</div><div class="line">			left = middle + 1;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			right = middle - 1;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> -1;//如果不存在，返回-1</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">	char m = 4;</div><div class="line">	//cout &lt;&lt; m&lt;&lt;endl;</div><div class="line">	char y[5] = &#123; 1,2,3,4&#125;;</div><div class="line">	int w=4;</div><div class="line">	w = BinarySearch(y, m, w);</div><div class="line">	cout &lt;&lt; w&lt;&lt;endl;</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;去不了的地方叫远方，回不去的是故乡~&lt;/blockquote&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;二分搜索技术是算法里面最简单的查找一个数所在位置的算法。&lt;/p&gt;
+&lt;h2 id=&quot;二分搜索技术&quot;&gt;&lt;a href=&quot;#二分搜索技术&quot; class=&quot;headerlink&quot; title=&quot;二分搜索技术&quot;&gt;&lt;/a&gt;二分搜索技术&lt;/h2&gt;&lt;h3 id=&quot;复杂度&quot;&gt;&lt;a href=&quot;#复杂度&quot; class=&quot;headerlink&quot; title=&quot;复杂度&quot;&gt;&lt;/a&gt;复杂度&lt;/h3&gt;&lt;p&gt;每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。&lt;br&gt;在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/algorithm/"/>
+    
+    
+      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
