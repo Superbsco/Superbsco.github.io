@@ -479,9 +479,9 @@
       <category term="ATM" scheme="http://yoursite.com/categories/ATM/"/>
     
     
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
-    
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
     
       <category term="ATM" scheme="http://yoursite.com/tags/ATM/"/>
     
@@ -543,9 +543,9 @@
       <category term="算法" scheme="http://yoursite.com/categories/algorithm/"/>
     
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
