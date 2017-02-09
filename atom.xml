@@ -488,36 +488,6 @@
   </entry>
   
   <entry>
-    <title>二分搜索技术</title>
-    <link href="http://yoursite.com/2017/01/16/binarysearch/"/>
-    <id>http://yoursite.com/2017/01/16/binarysearch/</id>
-    <published>2017-01-16T08:14:58.000Z</published>
-    <updated>2017-02-08T03:08:55.632Z</updated>
-    
-    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">去不了的地方叫远方，回不去的是故乡~</blockquote></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>二分搜索技术是算法里面最简单的查找一个数所在位置的算法。</p>
-<h2 id="二分搜索技术"><a href="#二分搜索技术" class="headerlink" title="二分搜索技术"></a>二分搜索技术</h2><h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。<br>在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).<br><a id="more"></a></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> <code style="color: #FF0033">此代码在VS2015上正常运行~</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;          </span></div><div class="line">using namespace std;</div><div class="line">template&lt;class Type&gt;            //在已经排好序的a[0]~a[n-1]当中搜索x</div><div class="line">int BinarySearch(Type a[], const Type&amp;x, int n)&#123;</div><div class="line">	int left = 0;</div><div class="line">	int right = n - 1;</div><div class="line">	<span class="keyword">while</span> (left&lt;=right)</div><div class="line">	&#123;</div><div class="line">		int middle = (left + right) / 2;</div><div class="line">		<span class="keyword">if</span> (x==a[middle])</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">return</span> middle;//返回x所在数组a的位置</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (x&gt;a[middle])</div><div class="line">		&#123;</div><div class="line">			left = middle + 1;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			right = middle - 1;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> -1;//如果不存在，返回-1</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">	char m = 4;</div><div class="line">	//cout &lt;&lt; m&lt;&lt;endl;</div><div class="line">	char y[5] = &#123; 1,2,3,4&#125;;</div><div class="line">	int w=4;</div><div class="line">	w = BinarySearch(y, m, w);</div><div class="line">	cout &lt;&lt; w&lt;&lt;endl;</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<hr>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;去不了的地方叫远方，回不去的是故乡~&lt;/blockquote&gt;&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;二分搜索技术是算法里面最简单的查找一个数所在位置的算法。&lt;/p&gt;
-&lt;h2 id=&quot;二分搜索技术&quot;&gt;&lt;a href=&quot;#二分搜索技术&quot; class=&quot;headerlink&quot; title=&quot;二分搜索技术&quot;&gt;&lt;/a&gt;二分搜索技术&lt;/h2&gt;&lt;h3 id=&quot;复杂度&quot;&gt;&lt;a href=&quot;#复杂度&quot; class=&quot;headerlink&quot; title=&quot;复杂度&quot;&gt;&lt;/a&gt;复杂度&lt;/h3&gt;&lt;p&gt;每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。&lt;br&gt;在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).&lt;br&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/algorithm/"/>
-    
-    
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java仿QQ聊天实现</title>
     <link href="http://yoursite.com/2017/01/16/qq/"/>
     <id>http://yoursite.com/2017/01/16/qq/</id>
@@ -546,6 +516,36 @@
       <category term="qq" scheme="http://yoursite.com/tags/qq/"/>
     
       <category term="网络编程" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二分搜索技术</title>
+    <link href="http://yoursite.com/2017/01/16/binarysearch/"/>
+    <id>http://yoursite.com/2017/01/16/binarysearch/</id>
+    <published>2017-01-16T08:14:58.000Z</published>
+    <updated>2017-02-08T03:08:55.632Z</updated>
+    
+    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">去不了的地方叫远方，回不去的是故乡~</blockquote></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>二分搜索技术是算法里面最简单的查找一个数所在位置的算法。</p>
+<h2 id="二分搜索技术"><a href="#二分搜索技术" class="headerlink" title="二分搜索技术"></a>二分搜索技术</h2><h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。<br>在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).<br><a id="more"></a></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> <code style="color: #FF0033">此代码在VS2015上正常运行~</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;          </span></div><div class="line">using namespace std;</div><div class="line">template&lt;class Type&gt;            //在已经排好序的a[0]~a[n-1]当中搜索x</div><div class="line">int BinarySearch(Type a[], const Type&amp;x, int n)&#123;</div><div class="line">	int left = 0;</div><div class="line">	int right = n - 1;</div><div class="line">	<span class="keyword">while</span> (left&lt;=right)</div><div class="line">	&#123;</div><div class="line">		int middle = (left + right) / 2;</div><div class="line">		<span class="keyword">if</span> (x==a[middle])</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">return</span> middle;//返回x所在数组a的位置</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (x&gt;a[middle])</div><div class="line">		&#123;</div><div class="line">			left = middle + 1;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			right = middle - 1;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> -1;//如果不存在，返回-1</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">	char m = 4;</div><div class="line">	//cout &lt;&lt; m&lt;&lt;endl;</div><div class="line">	char y[5] = &#123; 1,2,3,4&#125;;</div><div class="line">	int w=4;</div><div class="line">	w = BinarySearch(y, m, w);</div><div class="line">	cout &lt;&lt; w&lt;&lt;endl;</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;去不了的地方叫远方，回不去的是故乡~&lt;/blockquote&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;二分搜索技术是算法里面最简单的查找一个数所在位置的算法。&lt;/p&gt;
+&lt;h2 id=&quot;二分搜索技术&quot;&gt;&lt;a href=&quot;#二分搜索技术&quot; class=&quot;headerlink&quot; title=&quot;二分搜索技术&quot;&gt;&lt;/a&gt;二分搜索技术&lt;/h2&gt;&lt;h3 id=&quot;复杂度&quot;&gt;&lt;a href=&quot;#复杂度&quot; class=&quot;headerlink&quot; title=&quot;复杂度&quot;&gt;&lt;/a&gt;复杂度&lt;/h3&gt;&lt;p&gt;每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。&lt;br&gt;在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/algorithm/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
     
   </entry>
   
