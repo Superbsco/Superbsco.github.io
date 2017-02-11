@@ -36,9 +36,9 @@
       <category term="每日算法" scheme="http://yoursite.com/categories/%E6%AF%8F%E6%97%A5%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
       <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
       <category term="打印三角形" scheme="http://yoursite.com/tags/%E6%89%93%E5%8D%B0%E4%B8%89%E8%A7%92%E5%BD%A2/"/>
     
@@ -218,9 +218,9 @@
       <category term="随手写作" scheme="http://yoursite.com/categories/%E9%9A%8F%E6%89%8B%E5%86%99%E4%BD%9C/"/>
     
     
-      <category term="随手写作" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%89%8B%E5%86%99%E4%BD%9C/"/>
-    
       <category term="文章" scheme="http://yoursite.com/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="随手写作" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%89%8B%E5%86%99%E4%BD%9C/"/>
     
   </entry>
   
@@ -440,9 +440,9 @@
       <category term="随手写作" scheme="http://yoursite.com/categories/%E9%9A%8F%E6%89%8B%E5%86%99%E4%BD%9C/"/>
     
     
-      <category term="随手写作" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%89%8B%E5%86%99%E4%BD%9C/"/>
-    
       <category term="文章" scheme="http://yoursite.com/tags/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="随手写作" scheme="http://yoursite.com/tags/%E9%9A%8F%E6%89%8B%E5%86%99%E4%BD%9C/"/>
     
   </entry>
   
@@ -537,41 +537,11 @@
       <category term="ATM" scheme="http://yoursite.com/categories/ATM/"/>
     
     
+      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+    
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
-    
       <category term="ATM" scheme="http://yoursite.com/tags/ATM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二分搜索技术</title>
-    <link href="http://yoursite.com/2017/01/16/binarysearch/"/>
-    <id>http://yoursite.com/2017/01/16/binarysearch/</id>
-    <published>2017-01-16T08:14:58.000Z</published>
-    <updated>2017-02-08T03:08:55.632Z</updated>
-    
-    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">去不了的地方叫远方，回不去的是故乡~</blockquote></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>二分搜索技术是算法里面最简单的查找一个数所在位置的算法。</p>
-<h2 id="二分搜索技术"><a href="#二分搜索技术" class="headerlink" title="二分搜索技术"></a>二分搜索技术</h2><h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。<br>在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).<br><a id="more"></a></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> <code style="color: #FF0033">此代码在VS2015上正常运行~</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;          </span></div><div class="line">using namespace std;</div><div class="line">template&lt;class Type&gt;            //在已经排好序的a[0]~a[n-1]当中搜索x</div><div class="line">int BinarySearch(Type a[], const Type&amp;x, int n)&#123;</div><div class="line">	int left = 0;</div><div class="line">	int right = n - 1;</div><div class="line">	<span class="keyword">while</span> (left&lt;=right)</div><div class="line">	&#123;</div><div class="line">		int middle = (left + right) / 2;</div><div class="line">		<span class="keyword">if</span> (x==a[middle])</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">return</span> middle;//返回x所在数组a的位置</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (x&gt;a[middle])</div><div class="line">		&#123;</div><div class="line">			left = middle + 1;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			right = middle - 1;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> -1;//如果不存在，返回-1</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">	char m = 4;</div><div class="line">	//cout &lt;&lt; m&lt;&lt;endl;</div><div class="line">	char y[5] = &#123; 1,2,3,4&#125;;</div><div class="line">	int w=4;</div><div class="line">	w = BinarySearch(y, m, w);</div><div class="line">	cout &lt;&lt; w&lt;&lt;endl;</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<hr>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;去不了的地方叫远方，回不去的是故乡~&lt;/blockquote&gt;&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;二分搜索技术是算法里面最简单的查找一个数所在位置的算法。&lt;/p&gt;
-&lt;h2 id=&quot;二分搜索技术&quot;&gt;&lt;a href=&quot;#二分搜索技术&quot; class=&quot;headerlink&quot; title=&quot;二分搜索技术&quot;&gt;&lt;/a&gt;二分搜索技术&lt;/h2&gt;&lt;h3 id=&quot;复杂度&quot;&gt;&lt;a href=&quot;#复杂度&quot; class=&quot;headerlink&quot; title=&quot;复杂度&quot;&gt;&lt;/a&gt;复杂度&lt;/h3&gt;&lt;p&gt;每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。&lt;br&gt;在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).&lt;br&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/algorithm/"/>
-    
-    
-      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
-    
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -608,6 +578,36 @@
   </entry>
   
   <entry>
+    <title>二分搜索技术</title>
+    <link href="http://yoursite.com/2017/01/16/binarysearch/"/>
+    <id>http://yoursite.com/2017/01/16/binarysearch/</id>
+    <published>2017-01-16T08:14:58.000Z</published>
+    <updated>2017-02-08T03:08:55.632Z</updated>
+    
+    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">去不了的地方叫远方，回不去的是故乡~</blockquote></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>二分搜索技术是算法里面最简单的查找一个数所在位置的算法。</p>
+<h2 id="二分搜索技术"><a href="#二分搜索技术" class="headerlink" title="二分搜索技术"></a>二分搜索技术</h2><h3 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h3><p>每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。<br>在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).<br><a id="more"></a></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> <code style="color: #FF0033">此代码在VS2015上正常运行~</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;iostream&gt;          </span></div><div class="line">using namespace std;</div><div class="line">template&lt;class Type&gt;            //在已经排好序的a[0]~a[n-1]当中搜索x</div><div class="line">int BinarySearch(Type a[], const Type&amp;x, int n)&#123;</div><div class="line">	int left = 0;</div><div class="line">	int right = n - 1;</div><div class="line">	<span class="keyword">while</span> (left&lt;=right)</div><div class="line">	&#123;</div><div class="line">		int middle = (left + right) / 2;</div><div class="line">		<span class="keyword">if</span> (x==a[middle])</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">return</span> middle;//返回x所在数组a的位置</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (x&gt;a[middle])</div><div class="line">		&#123;</div><div class="line">			left = middle + 1;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			right = middle - 1;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> -1;//如果不存在，返回-1</div><div class="line">&#125;</div><div class="line">int <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">	char m = 4;</div><div class="line">	//cout &lt;&lt; m&lt;&lt;endl;</div><div class="line">	char y[5] = &#123; 1,2,3,4&#125;;</div><div class="line">	int w=4;</div><div class="line">	w = BinarySearch(y, m, w);</div><div class="line">	cout &lt;&lt; w&lt;&lt;endl;</div><div class="line">	system(<span class="string">"pause"</span>);</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;去不了的地方叫远方，回不去的是故乡~&lt;/blockquote&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;二分搜索技术是算法里面最简单的查找一个数所在位置的算法。&lt;/p&gt;
+&lt;h2 id=&quot;二分搜索技术&quot;&gt;&lt;a href=&quot;#二分搜索技术&quot; class=&quot;headerlink&quot; title=&quot;二分搜索技术&quot;&gt;&lt;/a&gt;二分搜索技术&lt;/h2&gt;&lt;h3 id=&quot;复杂度&quot;&gt;&lt;a href=&quot;#复杂度&quot; class=&quot;headerlink&quot; title=&quot;复杂度&quot;&gt;&lt;/a&gt;复杂度&lt;/h3&gt;&lt;p&gt;每执行一次算法的while循环，待搜索数组的大小减少一半，因此在最坏情况下，while循环被执行了O（logn）次。&lt;br&gt;在循环体内运算需要O（1）时间，因此整个算法在最坏的情况下的计算时间复杂性为O（logn).&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yoursite.com/categories/algorithm/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="c++" scheme="http://yoursite.com/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
     <title>PS,AI设计</title>
     <link href="http://yoursite.com/2017/01/14/photo/"/>
     <id>http://yoursite.com/2017/01/14/photo/</id>
@@ -639,40 +639,323 @@
   </entry>
   
   <entry>
-    <title>文件管理之文件系统设计 </title>
-    <link href="http://yoursite.com/2017/01/14/ospassage/"/>
-    <id>http://yoursite.com/2017/01/14/ospassage/</id>
+    <title>基数排序 </title>
+    <link href="http://yoursite.com/2017/01/14/shujujiegou/"/>
+    <id>http://yoursite.com/2017/01/14/shujujiegou/</id>
     <published>2017-01-14T11:26:35.000Z</published>
-    <updated>2017-02-08T03:10:08.362Z</updated>
+    <updated>2017-02-08T03:11:58.254Z</updated>
     
-    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">当夜幕降临时，在太阳以西，国境以南处，等候你的归来~</blockquote></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是操作系统课上的一个课后作业，操作系统考完后基本就忘记的差不多了，把这个实践代码在这里重新过一遍~</p>
-<h2 id="文件管理之文件系统设计"><a href="#文件管理之文件系统设计" class="headerlink" title="文件管理之文件系统设计"></a>文件管理之文件系统设计</h2><h3 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h3><p>本实验的目的是使学生在学习文件系统原理的基础上，通过参考成熟的操作系统中文件系统的设计，实现一个简单的多用户文件系统，加深对文件系统的功能、内部结构包括逻辑结构以及物理结构的理解。</p>
-<h3 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h3><p>设计一个简单的二级文件系统。要求实现下列命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">login             用户登录</div><div class="line">dir                列文件目录</div><div class="line">create           创建文件</div><div class="line">delete           删除文件</div><div class="line"> &lt;!-- 列目录时要列出文件名、物理地址、文件长度。--&gt;</div></pre></td></tr></table></figure></p>
- <a id="more"></a>
-<h3 id="实验提示"><a href="#实验提示" class="headerlink" title="实验提示"></a>实验提示</h3><p> <strong style="color: #3366FF">1.首先设计文件系统的物理结构、模拟磁盘存储结构（目录与文件的组织方式）。<br> <strong style="color: #3366FF">2.确定文件系统的数据结构：主目录、子目录及活动文件等。主目录和子目录都可以文件的形式存放于磁盘，这样便于查找和修改。<br><strong style="color: #3366FF"> 3.用户创建的文件，可以编号存储于模拟磁盘上。如file0，file1，file2，.…..并以编号作为物理地址，在目录中进行登记。</strong></strong></strong></p>
-<h3 id="实验说明"><a href="#实验说明" class="headerlink" title="实验说明"></a>实验说明</h3><p> 可以参考现有的系统如FAT、NTFS或ext3等系统的结构。<br> 同学在完成基本功能的基础上可以考虑对系统的扩展，如多级目录、文件的共享以及系统的优化，如目录查找算法的改进等。</p>
-<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><p> <code style="color: #FF0033">此代码在VS2015上正常运行~</code><br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#include &lt;stdio.h&gt;</span></div><div class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></div><div class="line"><span class="comment">#include &lt;conio.h&gt;</span></div><div class="line"><span class="comment">#include &lt;time.h&gt;</span></div><div class="line"><span class="comment">#include &lt;string.h&gt;</span></div><div class="line"><span class="comment">#define MaxUser 100//定义最大MDF主目录文件</span></div><div class="line"><span class="comment">#define MaxDisk 512*1024//模拟最大磁盘空间</span></div><div class="line"><span class="comment">#define commandAmount 12//对文件操作的指令数</span></div><div class="line">//存储空间管理有关结构体和变量</div><div class="line">char disk[MaxDisk];//模拟512K的磁盘存储空间</div><div class="line">typedef struct distTable//磁盘块结构体</div><div class="line">&#123;</div><div class="line">	int maxlength;</div><div class="line">	int start;</div><div class="line">	int useFlag;</div><div class="line">	distTable *next;</div><div class="line">&#125;diskNode;</div><div class="line">diskNode *diskHead;</div><div class="line">struct fileTable//文件块结构体</div><div class="line">&#123;</div><div class="line">	char fileName[10];</div><div class="line">	int strat;//文件在磁盘存储空间的起始地址</div><div class="line">	int length;//文件内容长度</div><div class="line">	int maxlength;//文件的最大长度</div><div class="line">	char fileKind[3];//文件的属性——读写方式</div><div class="line">	struct tm *timeinfo;</div><div class="line">	bool openFlag;//判断是否有进程打开了该文件</div><div class="line">//fileTable *next;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">//两级目录结构体</div><div class="line">typedef struct user_file_directory//用户文件目录文件UFD</div><div class="line">&#123;</div><div class="line">	//char fileName[10];</div><div class="line">	fileTable *file;</div><div class="line">	user_file_directory *next;</div><div class="line">&#125;UFD;</div><div class="line">//UFD *headFile;</div><div class="line">typedef struct master_file_directory//主文件目录MFD</div><div class="line">&#123;</div><div class="line">	char userName[10];</div><div class="line">	char password[10];</div><div class="line">	UFD *user;</div><div class="line">&#125;MFD;</div><div class="line">MFD userTable[MaxUser];</div><div class="line">int used = 0; //定义MFD目录中用已有的用户数</div><div class="line"></div><div class="line">//文件管理</div><div class="line">void fileCreate(char fileName[], int length, char fileKind[]);//创建文件</div><div class="line">void fileDir(char UserName[]); //显示某一用户的所有文件</div><div class="line">void fileDel(char fileName[]); //删除文件</div><div class="line">int requestDist(int &amp;startPostion, int maxLength); //磁盘分配查询</div><div class="line">void initDisk(); //初始化磁盘</div><div class="line">void userCreate();//用户管理</div><div class="line">int login();</div><div class="line">int userID = -1;//用户登录的ID号，值为-1时表示没有用户登录</div><div class="line"></div><div class="line">int <span class="function"><span class="title">main</span></span>()</div><div class="line">&#123;</div><div class="line">	char order[<span class="built_in">command</span>Amount][10];</div><div class="line">	strcpy(order[1], <span class="string">"create"</span>);</div><div class="line">	strcpy(order[2], <span class="string">"del"</span>);</div><div class="line">	strcpy(order[3], <span class="string">"dir"</span>);</div><div class="line">	strcpy(order[0], <span class="string">"0"</span>);</div><div class="line">	char <span class="built_in">command</span>[50], command_str1[15], </div><div class="line">		command_str2[15], command_str3[15], command_str4[13];</div><div class="line">	int i, k, j;</div><div class="line">	int length;</div><div class="line">	initDisk(); //初始化磁盘</div><div class="line">	<span class="keyword">for</span> (i = 0; i&lt;MaxUser; i++)//初始化用户UFD目录文件的头指针</div><div class="line">	&#123;</div><div class="line">		userTable[i].user = (UFD *)malloc(sizeof(UFD));</div><div class="line">		userTable[i].user-&gt;next = NULL;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span> (1)</div><div class="line">	&#123;	</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"                  1、Creat user\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"                  2、login\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"Please chooce the function key:&gt;"</span>);</div><div class="line">		int choice;</div><div class="line">		scanf(<span class="string">"%d"</span>, &amp;choice);</div><div class="line">		<span class="keyword">if</span> (choice == 1) userCreate();</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (choice == 2) userID = login();</div><div class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"您的输入有误，请重新选择\n"</span>);</div><div class="line">		<span class="keyword">while</span> (userID != -1)</div><div class="line">		&#123;</div><div class="line">			fflush(stdin);</div><div class="line">			gets_s(<span class="built_in">command</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"———————————————————————————————————————\n"</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">" create-创建 格式：create a1 1000 rw,将创建名为a1,长度为1000字节可读可写的文件\n"</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">" del-删除 格式：del a1,将删除名为a1的文件\n"</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">" dir-显示文件 格式：dir aaa,将显示aaa用户的所有文件\n"</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">" exit-退出程序(输入exit时在后面加一个空格，否则退出异常)\n"</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"————————————————————————————————————————\n"</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"please imput your command:&gt;"</span>);</div><div class="line"></div><div class="line">			gets_s(<span class="built_in">command</span>);</div><div class="line">			int select;</div><div class="line">			//command_str1字符串存储命令的操作类型</div><div class="line">			<span class="keyword">for</span> (i = 0; <span class="built_in">command</span>[i] != <span class="string">' '</span>&amp;&amp;<span class="built_in">command</span>[i] != <span class="string">'\0'</span>; i++)</div><div class="line">				command_str1[i] = <span class="built_in">command</span>[i];</div><div class="line">			k = i;</div><div class="line">			command_str1[k] = <span class="string">'\0'</span>;</div><div class="line">			<span class="keyword">for</span> (i = 0; i&lt;<span class="built_in">command</span>Amount; i++)</div><div class="line">			&#123;</div><div class="line">				<span class="keyword">if</span> (!strcmp(command_str1, order[i]))</div><div class="line">				&#123;</div><div class="line">					select = i;</div><div class="line">					<span class="built_in">break</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (i == <span class="built_in">command</span>Amount)</div><div class="line">			&#123;</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"您输入的命令有误，请重新输入\n"</span>);</div><div class="line">				<span class="built_in">continue</span>;</div><div class="line">			&#125;</div><div class="line">			//commmand_str2字符串存储文件名或用户名</div><div class="line">			<span class="keyword">for</span> (i = k + 1, k = 0; <span class="built_in">command</span>[i] != <span class="string">' '</span>&amp;&amp;<span class="built_in">command</span>[i] != <span class="string">'\0'</span>; i++, k++) </div><div class="line">				command_str2[k] = <span class="built_in">command</span>[i];</div><div class="line">			command_str2[k] = <span class="string">'\0'</span>;</div><div class="line">			k = i;</div><div class="line">			switch (select)</div><div class="line">			&#123;</div><div class="line">			<span class="keyword">case</span> 1:<span class="keyword">for</span> (i = k + 1, k = 0; <span class="built_in">command</span>[i] != <span class="string">' '</span>; i++, k++)</div><div class="line">				command_str3[k] = <span class="built_in">command</span>[i];</div><div class="line">				command_str3[k] = <span class="string">'\0'</span>;</div><div class="line">				k = i;</div><div class="line">				j = 1;</div><div class="line">				length = 0;//初始化文件长度</div><div class="line">				<span class="keyword">for</span> (i = strlen(command_str3) - 1; i &gt;= 0; i--) //把字符串转换为十进制</div><div class="line">				&#123;</div><div class="line">					length += (command_str3[i] - 48)*j;</div><div class="line">					j *= 10;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">for</span> (i = k + 1, k = 0; <span class="built_in">command</span>[i] != <span class="string">' '</span>&amp;&amp;<span class="built_in">command</span>[i] != <span class="string">'\0'</span>; i++, k++)</div><div class="line">					command_str4[k] = <span class="built_in">command</span>[i];</div><div class="line">				command_str4[k] = <span class="string">'\0'</span>;</div><div class="line">				fileCreate(command_str2, length, command_str4); <span class="built_in">break</span>;</div><div class="line">			<span class="keyword">case</span> 2:fileDel(command_str2); <span class="built_in">break</span>;</div><div class="line">			<span class="keyword">case</span> 3:fileDir(command_str2); <span class="built_in">break</span>;</div><div class="line">			<span class="keyword">case</span> 0:<span class="built_in">exit</span>(1);	</div><div class="line">			default:</div><div class="line">				<span class="built_in">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> 0;</div><div class="line">&#125;</div><div class="line">void <span class="function"><span class="title">userCreate</span></span>()</div><div class="line">&#123;</div><div class="line">	char c;</div><div class="line">	char userName[10];</div><div class="line">	int i;</div><div class="line">	<span class="keyword">if</span> (used&lt;MaxUser)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"请输入用户名："</span>);</div><div class="line">		<span class="keyword">for</span> (i = 0; c = getch(); i++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (c == 13) <span class="built_in">break</span>;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				userName[i] = c;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%c"</span>, c);</div><div class="line">		&#125;</div><div class="line">		userName[i] = <span class="string">'\0'</span>;</div><div class="line">		<span class="keyword">for</span> (i = 0; i&lt;used; i++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (!strcmp(userTable[i].userName, userName))</div><div class="line">			&#123;</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"该用户名已存在,创建用户失败\n"</span>);</div><div class="line">				system(<span class="string">"pause"</span>);</div><div class="line">				<span class="built_in">return</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		strcpy(userTable[used].userName, userName);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"请输入密码："</span>);</div><div class="line">		<span class="keyword">for</span> (i = 0; c = getch(); i++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (c == 13) <span class="built_in">break</span>;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				userTable[used].password[i] = c;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"*"</span>);</div><div class="line">		&#125;</div><div class="line">		userTable[userID].password[i] = <span class="string">'\0'</span>;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"创建用户成功\n"</span>);</div><div class="line">		used++;</div><div class="line">		system(<span class="string">"pause"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"创建用户失败，用户已达到上限\n"</span>);</div><div class="line">		system(<span class="string">"pause"</span>);</div><div class="line">	&#125;</div><div class="line">	fflush(stdin);</div><div class="line">&#125;</div><div class="line"></div><div class="line">int <span class="function"><span class="title">login</span></span>()</div><div class="line">&#123;</div><div class="line">	char name[10], psw[10];</div><div class="line">	char c;</div><div class="line">	int i, <span class="built_in">times</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"请输入用户名:"</span>);</div><div class="line">	<span class="keyword">for</span> (i = 0; c = getch(); i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (c == 13) <span class="built_in">break</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			name[i] = c;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>, c);</div><div class="line">	&#125;</div><div class="line">	name[i] = <span class="string">'\0'</span>;</div><div class="line">	<span class="keyword">for</span> (i = 0; i&lt;used; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (!strcmp(userTable[i].userName, name))</div><div class="line">			<span class="built_in">break</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (i == used)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n您输入的用户名不存在\n"</span>);</div><div class="line">		system(<span class="string">"pause"</span>);</div><div class="line">		<span class="built_in">return</span> -1;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="built_in">times</span> = 0; <span class="built_in">times</span>&lt;3; <span class="built_in">times</span>++)</div><div class="line">	&#123;</div><div class="line">		memset(psw, <span class="string">'\0'</span>, sizeof(psw));</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n请输入密码:"</span>);</div><div class="line">		/*<span class="keyword">for</span> (i = 0; c = getch(); i++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (c == 13) <span class="built_in">break</span>;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				psw[i] = c;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"*"</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);*/</div><div class="line">		int i = 0;</div><div class="line">		<span class="keyword">while</span> (psw[i]=_getch())</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (psw[i]!=<span class="string">'\r'</span>)</div><div class="line">			&#123;</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"*"</span>);</div><div class="line">				i++;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				<span class="built_in">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		psw[i] = <span class="string">'\0'</span>;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">		<span class="keyword">for</span> (i = 0; i&lt;used; i++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span> (!strcmp(psw, userTable[i].password))</div><div class="line">			&#123;</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"用户登录成功\n"</span>);</div><div class="line">				system(<span class="string">"pause"</span>);</div><div class="line">				<span class="built_in">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (i == used)</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"\n您输入的密码错误，您还有%d次输入机会\n"</span>, 2 - <span class="built_in">times</span>);</div><div class="line">			<span class="keyword">if</span> (<span class="built_in">times</span> == 2) <span class="built_in">exit</span>(0);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="built_in">break</span>;</div><div class="line">	&#125;</div><div class="line">	fflush(stdin);</div><div class="line">	<span class="built_in">return</span> i;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void <span class="function"><span class="title">initDisk</span></span>()</div><div class="line">&#123;</div><div class="line">	diskHead = (diskNode *)malloc(sizeof(diskNode));</div><div class="line">	diskHead-&gt;maxlength = MaxDisk;</div><div class="line">	diskHead-&gt;useFlag = 0;</div><div class="line">	diskHead-&gt;start = 0;</div><div class="line">	diskHead-&gt;next = NULL;</div><div class="line">&#125;</div><div class="line">int requestDist(int &amp;startPostion, int maxLength)</div><div class="line">&#123;</div><div class="line">	int flag = 0;  //标记是否分配成功</div><div class="line">	diskNode *p, *q, *temp;</div><div class="line">	p = diskHead;</div><div class="line">	<span class="keyword">while</span> (p)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (p-&gt;useFlag == 0 &amp;&amp; p-&gt;maxlength&gt;maxLength)</div><div class="line">		&#123;</div><div class="line">			startPostion = p-&gt;start;</div><div class="line">			q = (diskNode *)malloc(sizeof(diskNode));</div><div class="line">			q-&gt;start = p-&gt;start;</div><div class="line">			q-&gt;maxlength = maxLength;</div><div class="line">			q-&gt;useFlag = 1;</div><div class="line">			q-&gt;next = NULL;</div><div class="line">			diskHead-&gt;start = p-&gt;start + maxLength;</div><div class="line">			diskHead-&gt;maxlength = p-&gt;maxlength - maxLength;</div><div class="line">			flag = 1;</div><div class="line">			temp = p;</div><div class="line">			<span class="keyword">if</span> (diskHead-&gt;next == NULL) diskHead-&gt;next = q;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				<span class="keyword">while</span> (temp-&gt;next) temp = temp-&gt;next;</div><div class="line">				temp-&gt;next = q;</div><div class="line">			&#125;</div><div class="line">			<span class="built_in">break</span>;</div><div class="line">		&#125;</div><div class="line">		p = p-&gt;next;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> flag;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void fileCreate(char fileName[], int length, char fileKind[])</div><div class="line">&#123;</div><div class="line">	//int i,j;</div><div class="line">	time_t rawtime;</div><div class="line">	int startPos;</div><div class="line">	UFD *fileNode, *p;</div><div class="line">	<span class="keyword">for</span> (p = userTable[userID].user-&gt;next; p != NULL; p = p-&gt;next)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (!strcmp(p-&gt;file-&gt;fileName, fileName))</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"文件重名，创建文件失败\n"</span>);</div><div class="line">			system(<span class="string">"pause"</span>);</div><div class="line">			<span class="built_in">return</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (requestDist(startPos, length))</div><div class="line">	&#123;</div><div class="line">		fileNode = (UFD *)malloc(sizeof(UFD));</div><div class="line">		//这一步必不可少，因为fileNode里面的指针也需要申请地址，否则fileNode-&gt;file指向会出错</div><div class="line">		fileNode-&gt;file = (fileTable *)malloc(sizeof(fileTable));</div><div class="line">		strcpy(fileNode-&gt;file-&gt;fileName, fileName);</div><div class="line">		strcpy(fileNode-&gt;file-&gt;fileKind, fileKind);</div><div class="line">		fileNode-&gt;file-&gt;maxlength = length;</div><div class="line">		fileNode-&gt;file-&gt;strat = startPos;</div><div class="line">		fileNode-&gt;file-&gt;openFlag = <span class="literal">false</span>;</div><div class="line">		time(&amp;rawtime);</div><div class="line">		fileNode-&gt;file-&gt;timeinfo = localtime(&amp;rawtime);</div><div class="line">		fileNode-&gt;next = NULL;</div><div class="line">		<span class="keyword">if</span> (userTable[userID].user-&gt;next == NULL)</div><div class="line">			userTable[userID].user-&gt;next = fileNode;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			p = userTable[userID].user-&gt;next;</div><div class="line">			<span class="keyword">while</span> (p-&gt;next) p = p-&gt;next;</div><div class="line">			p-&gt;next = fileNode;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"创建文件成功\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"按任意键继续..."</span>);</div><div class="line">		//system(<span class="string">"pause"</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"磁盘空间已满或所创建文件超出磁盘空闲容量，磁盘空间分配失败\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"按任意键继续..."</span>);</div><div class="line">		//system(<span class="string">"pause"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void freeDisk(int startPostion)</div><div class="line">&#123;</div><div class="line">	diskNode *p;</div><div class="line">	<span class="keyword">for</span> (p = diskHead; p != NULL; p = p-&gt;next)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (p-&gt;start == startPostion)</div><div class="line">			<span class="built_in">break</span>;</div><div class="line">	&#125;</div><div class="line">	p-&gt;useFlag = <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void fileDel(char fileName[])</div><div class="line">&#123;</div><div class="line">	UFD *p, *q, *temp;</div><div class="line">	q = userTable[userID].user;</div><div class="line">	p = q-&gt;next;</div><div class="line">	<span class="keyword">while</span> (p)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (!strcmp(p-&gt;file-&gt;fileName, fileName)) <span class="built_in">break</span>;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			p = p-&gt;next;</div><div class="line">			q = q-&gt;next;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (p)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (p-&gt;file-&gt;openFlag != <span class="literal">true</span>) //先判断是否有进程打开该文件</div><div class="line">		&#123;</div><div class="line">			temp = p;</div><div class="line">			q-&gt;next = p-&gt;next;</div><div class="line">			freeDisk(temp-&gt;file-&gt;strat);//磁盘空间回收</div><div class="line">			free(temp);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"文件删除成功\n"</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"按任意键继续..."</span>);</div><div class="line">			//system(<span class="string">"pause"</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"该文件已被进程打开,删除失败\n"</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"按任意键继续..."</span>);</div><div class="line">			//system(<span class="string">"pause"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"没有找到该文件,请检查输入的文件名是否正确\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"按任意键继续..."</span>);</div><div class="line">		//system(<span class="string">"pause"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void fileDir(char userName[])</div><div class="line">&#123;</div><div class="line">	UFD *p;</div><div class="line">	int i, k;</div><div class="line">	<span class="keyword">for</span> (i = 0; i&lt;MaxUser; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (!strcmp(userTable[i].userName, userName))</div><div class="line">		&#123;</div><div class="line">			k = i; <span class="built_in">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (i == MaxUser)</div><div class="line">	&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"没有找到该用户，请检查输入用户名是否正确\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"按任意键继续..."</span>);</div><div class="line">		//system(<span class="string">"pause"</span>);</div><div class="line">		<span class="built_in">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		p = userTable[k].user-&gt;next;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"文件名  文件长度  文件在磁盘的起始地址  文件类型               创建时间\n"</span>);</div><div class="line">		<span class="keyword">for</span> (; p != NULL; p = p-&gt;next)</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%s        %d              %d              %s            %s"</span>, p-&gt;file-&gt;fileName,</div><div class="line">				p-&gt;file-&gt;maxlength, p-&gt;file-&gt;strat, p-&gt;file-&gt;fileKind, asctime(p-&gt;file-&gt;timeinfo));</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"按任意键继续..."</span>);</div><div class="line">		//system(<span class="string">"pause"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
- <hr>
-]]></content>
+    <content type="html"><![CDATA[<p><blockquote class="blockquote-center">如果一片瓦尔登湖不能荡涤心灵，那就没办法了~</blockquote></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据结构实践任务，花了几个星期在网上找，都是不完全的版本，加入自己的理解写下能排数字和字母的基数排序~</p>
+<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>对输入的关键字序列进行链式基数排序，并分析算法复杂度。</p>
+<h3 id="任务要求"><a href="#任务要求" class="headerlink" title="任务要求"></a>任务要求</h3><p>1)    对输入的自然数关键字序列进行链式基数排序。<br>2)    需排序的数据是英文单词，从文件中读取；按字典顺序排列，写文件保存。</p>
+<h3 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h3><p>输入自然数关键字序列：278，109，63，930，589，184，505，269，8，83。<br>输入英文单词组成的文件，按字典排序并输出到文件中。<a id="more"></a></p>
+<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p>第一个自然数关键字排序直接在cmd窗口输入即可排序。<br>第二个读取字母并排序之前需要在D盘中创建一个f1.txt文件，在里面输入10个长度小于等于9的单词，每输入一个单词换行。这里不管是自然数还是单词统一使用MSD优先排序（即从前往后对比）。<br>具体排序思路参考严蔚敏的数据结构。</p>
+<h3 id="算法复杂度分析"><a href="#算法复杂度分析" class="headerlink" title="算法复杂度分析"></a>算法复杂度分析</h3><p><img src="/uploads/jishupx.png"></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p> <code style="color: #FF0033">此代码在VS2015上正常运行~</code></p>
+<pre><code class="bash">
+<span class="comment">#include &lt;iostream&gt;</span>
+<span class="comment">#include &lt;fstream&gt; //文件输入输出流</span>
+<span class="comment">#include&lt;string&gt;</span>
+using namespace std;
+//数字结构体
+<span class="comment">#define MAX_NUM_OF_KEY 8//关键字项数的最大值</span>
+<span class="comment">#define RADIX    10//关键字基数，此时是十进制整数的基数</span>
+<span class="comment">#define MAX_SPACE 10000</span>
+typedef int DataType;
+typedef struct
+{
+    int data;//数据，如278
+    DataType keys[MAX_NUM_OF_KEY];//每个数据的所有关键字，278的2，7，8
+    int next;
+}SLCell;    //静态链表的节点类型
+typedef struct Sllist
+{
+    SLCell *R; //静态链表的可利用空间，r[0]为头结点
+    int recnum; //静态链表的当前长度
+    int keynum; //当前数据的关键字个数
+}Sllist, *SLList; //静态链表类型
+typedef int ArrType[RADIX];//指针数组类型，声明两个指针数组，一个头指针，一个尾指针
+
+//字母结构体
+<span class="comment">#define MaxLen 9  //单词的最大长度</span>
+<span class="comment">#define Radix  27 //基数rd为27,分别对应' ','a',…'z'</span>
+typedef char String[MaxLen + 1];//定义String为字符数组类型                              
+typedef struct node
+{
+    String word;  //单词
+    struct node *next;  //next指针
+} LinkNode;
+//数字基数排序
+void creatList(SLList &amp;SLL) //创建链表
+{
+    int key;
+    int i = 1, j;
+    cout &lt;&lt; <span class="string">"输入要进行排序的数字(输入0结束):"</span> &lt;&lt; endl;
+    cin &gt;&gt; key;
+    <span class="keyword">while</span> (key != 0)
+    {
+        SLL-&gt;R[i].data = key;
+        <span class="keyword">for</span> (j = 1; j &lt;= SLL-&gt;keynum; j++)
+        {
+            SLL-&gt;R[i].keys[j] = key % 10;
+            key /= 10;
+        }
+        SLL-&gt;R[i - 1].next = i++;
+        cin &gt;&gt; key;
+    }
+    SLL-&gt;recnum = i - 1;
+    SLL-&gt;R[SLL-&gt;recnum].next = 0;
+}
+//打印输出
+void <span class="built_in">print</span>(SLList &amp;SLL)
+{
+    <span class="keyword">for</span> (int p = SLL-&gt;R[0].next; p; p = SLL-&gt;R[p].next)
+    {
+        cout &lt;&lt;<span class="string">"["</span>&lt;&lt; SLL-&gt;R[p].data &lt;&lt;<span class="string">"]"</span>&lt;&lt; <span class="string">"  "</span>;
+    }
+    cout &lt;&lt; endl;
+}
+//分配算法
+void distribute(SLCell *R, int i, ArrType front, ArrType end)
+{
+    //静态链表L的R域中记录已按(keys[0]...keys[i-1]有序)。
+    //本算法按第i个关键字keys[i]建立RADIX个子表，使同一子表中记录的keys[i]相同。
+    //front[0...RADIX-1]和end[0...RADIX-1]分别指向各子表中第一个和最后一个记录。
+    int j;
+    <span class="keyword">for</span> (int j = 0; j&lt;RADIX; ++j)
+        front[j] = 0;        //各子表初始化为空表
+    <span class="keyword">for</span> (int p = R[0].next; p; p = R[p].next)
+    {
+        j = R[p].keys[i];           //映射第i个关键字
+        <span class="keyword">if</span> (!front[j])
+            front[j] = p;        //若front[j]为空，则把记录连接到front[j]的头指针上
+        <span class="keyword">else</span>
+            R[end[j]].next = p;    //若front[j]的头指针已经连接过了，说明已j为关键字的数据已经有了，
+                                   //这时把上一个以j为关键字的数据指向当前的这个数，即下标为p的数据
+        end[j] = p;        //尾指针重新指到每次更新的数据上
+    }
+}
+//收集算法
+void collect(SLCell *R, int i, ArrType front, ArrType end)
+{
+    //本算法按keys[i]自小到大地将f[0...RADIX-1]所指各子表依次链接成为一个链表
+    int j;
+    <span class="keyword">for</span> (j = 0; !front[j]; j++);   //找到第一个不为空的子表
+    R[0].next = front[j];            //重整静态链表
+    int k = end[j];                    //k为当前子表的尾指针
+    <span class="keyword">while</span> (j&lt;RADIX)
+    {
+        <span class="keyword">for</span> (++j; j&lt;RADIX; j++)
+            <span class="keyword">if</span> (front[j])        //找下一个非空子表
+            {
+                R[k].next = front[j];        //连接
+                k = end[j];
+            }
+    }
+    R[k].next = 0;                    //k指向最后一个非空子表的尾指针
+}
+//字母基数排序
+void DispWord(String R[], int n) //输出单词
+{
+    int i;
+    string o[10];
+    ofstream fout(<span class="string">"D:\\inf.txt"</span>); //排序成功后，重新对排序写入inf.txt
+    <span class="keyword">if</span> (!fout)
+    {
+        cout &lt;&lt; <span class="string">"Fail to write to file.\n"</span>;
+    }
+    <span class="keyword">for</span> (i = 0; i &lt; n; i++)
+    {
+        cout &lt;&lt; <span class="string">"["</span> &lt;&lt; R[i] &lt;&lt; <span class="string">"]"</span>;
+        o[i] = R[i];
+        fout &lt;&lt; <span class="string">"["</span>&lt;&lt;o[i]&lt;&lt;<span class="string">"]"</span> &lt;&lt; endl;
+    }
+    cout &lt;&lt; endl;
+    fout.close();
+}
+void PreProcess(String R[], int n)
+//对单词进行预处理,用空格填充尾部至MaxLen长
+{
+    int i, j;
+    <span class="keyword">for</span> (i = 0; i&lt;n; i++)
+    {
+        <span class="keyword">if</span> (strlen(R[i])&lt;MaxLen)
+        {
+            <span class="keyword">for</span> (j = strlen(R[i]); j&lt;MaxLen; j++)
+                R[i][j] = <span class="string">' '</span>;
+            R[i][j] = <span class="string">'\0'</span>;
+        }
+    }
+}
+void EndProcess(String R[], int n)
+//恢复处理,删除预处理时填充的尾部空格
+{
+    int i, j;
+    <span class="keyword">for</span> (i = 0; i&lt;n; i++)
+    {
+        <span class="keyword">for</span> (j = MaxLen - 1; R[i][j] == <span class="string">' '</span>; j--);
+        R[i][j + 1] = <span class="string">'\0'</span>;
+    }
+}
+void Distribute(String R[], LinkNode *head[], LinkNode *tail[], int j, int n)
+//按关键字的第j个分量进行分配,进入此过程时各队列一定为空
+{
+    int i, k;
+    LinkNode *p;
+    <span class="keyword">for</span> (i = 0; i&lt;n; i++)         //依次扫描R[i],将其入队
+    {
+        <span class="keyword">if</span> (R[i][j] == <span class="string">' '</span>)       //空格时放入0号队列中,<span class="string">'a'</span>时放入1号队列中,…
+            k = 0;
+        <span class="keyword">else</span>
+            k = R[i][j] - <span class="string">'a'</span> + 1;
+        p = (LinkNode *)malloc(sizeof(LinkNode)); //创建新结点
+        strcpy_s(p-&gt;word, R[i]);
+        p-&gt;next = NULL;
+        <span class="keyword">if</span> (head[k] == NULL)
+        {
+            head[k] = p;
+            tail[k] = p;
+        }
+        <span class="keyword">else</span>
+        {
+            tail[k]-&gt;next = p;
+            tail[k] = p;
+        }
+    }
+}
+void Collect(String R[], LinkNode *head[])
+//依次将各非空队列中的记录收集起来
+{
+    int k = 0, i;
+    LinkNode *p;
+    <span class="keyword">for</span> (i = 0; i&lt;Radix; i++)
+        <span class="keyword">for</span> (p = head[i]; p != NULL; p = p-&gt;next)
+            strcpy_s(R[k++], p-&gt;word);
+}
+void RadixSort(String R[], int n)    //对R[0..n-1]进行基数排序
+{
+    LinkNode *head[Radix], *tail[Radix]; //定义Radix个队列
+    int i, j;
+    int k = 1;
+    <span class="keyword">for</span> (i = MaxLen - 1; i &gt;= 0; i--)             //从低位到高位做d趟箱排序
+    {
+        <span class="keyword">for</span> (j = 0; j&lt;Radix; j++)
+            head[j] = tail[j] = NULL;           //队列置空
+        Distribute(R, head, tail, i, n);        //第i趟分配
+        Collect(R, head);                    //第i趟收集
+        cout &lt;&lt; <span class="string">"第"</span> &lt;&lt; k &lt;&lt; <span class="string">"趟分配和收集:"</span> &lt;&lt; endl;
+        <span class="keyword">for</span> (int m = 0; m &lt;10; m++)
+        {
+            cout&lt;&lt;<span class="string">"["</span>&lt;&lt;R[m]&lt;&lt;<span class="string">"]"</span>;
+        }
+        k++;
+        cout &lt;&lt; endl;
+    }
+}
+//主函数
+int <span class="function"><span class="title">main</span></span>()
+{
+    SLList SLL;
+    SLL = (SLList)malloc(MAX_SPACE * sizeof(Sllist));
+    SLL-&gt;R = (SLCell *)malloc(MAX_SPACE * sizeof(SLCell));
+    SLL-&gt;recnum = 0;
+    SLL-&gt;keynum = 3;
+    string R[10];
+    String c[10];
+    ifstream fopen(<span class="string">"D:\\f1.txt"</span>);//读取D盘inf.txt文件
+    <span class="keyword">if</span> (!fopen)
+    {
+        cout &lt;&lt; <span class="string">"fail to read the file.\n"</span>;
+    }
+    <span class="keyword">while</span> (!fopen.eof()) {   //读取D盘写入的文件
+        <span class="keyword">for</span> (int q = 0; q&lt;10; q++) {
+            getline(fopen, R[q]); //读取第一行
+            strcpy_s(c[q],R[q].c_str());
+        }
+    }
+    fopen.close();
+    /*ofstream fout(<span class="string">"D:\\inf.txt"</span>); //排序成功后，重新对用户信息写入inf.txt
+    <span class="keyword">if</span> (!fout)
+    {
+        cout &lt;&lt; <span class="string">"Fail to write to file.\n"</span>;
+    }
+    <span class="keyword">for</span> (int o = 0; o &lt; 10; o++) {
+        fout &lt;&lt; c[o] &lt;&lt; endl;
+    }
+    fout.close();*/
+    int k;
+    <span class="keyword">while</span> (1) {
+        cout &lt;&lt; <span class="string">"*************基数排序程序***************"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"*          选择要执行的命令            *"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"*    1.输入自然数进行链式基数排序      *"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"*    2.从文件中读取字母,按字典顺序排列 *"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"*    3.退出程序                   *"</span> &lt;&lt; endl;
+        cout &lt;&lt; <span class="string">"****************************************"</span> &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+        cin &gt;&gt; k;
+        switch (k)
+        {
+        <span class="keyword">case</span> 1:
+            creatList(SLL);
+            cout &lt;&lt; <span class="string">"排序前:"</span> &lt;&lt; endl;
+            <span class="built_in">print</span>(SLL);
+            ArrType front, end;
+            <span class="keyword">for</span> (int i = 1; i &lt;= SLL-&gt;keynum; i++)    //按LSD法对各关键字进行分配和收集
+            {
+                distribute(SLL-&gt;R, i, front, end);    //第i趟分配
+                collect(SLL-&gt;R, i, front, end);        //第i趟收集
+                cout &lt;&lt; <span class="string">"第"</span> &lt;&lt; i &lt;&lt; <span class="string">"趟分配和收集:"</span> &lt;&lt; endl;
+                <span class="built_in">print</span>(SLL);
+            }
+            cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+            <span class="built_in">break</span>;
+        <span class="keyword">case</span> 2:
+            cout &lt;&lt; <span class="string">"从D:\\f1.txt中读取到的单词为："</span> &lt;&lt; endl;
+            DispWord(c, 10);
+            PreProcess(c, 10);
+            cout &lt;&lt; <span class="string">"预处理后："</span> &lt;&lt; endl;
+            DispWord(c, 10);
+            RadixSort(c, 10);
+            cout &lt;&lt; <span class="string">"排序结果："</span> &lt;&lt; endl;
+            DispWord(c, 10);
+            EndProcess(c, 10);
+            cout &lt;&lt; <span class="string">"最终结果："</span> &lt;&lt; endl;
+            DispWord(c, 10);
+            cout &lt;&lt; <span class="string">"******排序后的结果已经成功写入D盘inf.txt!******"</span>;
+            cout &lt;&lt; endl &lt;&lt; endl &lt;&lt; endl;
+            <span class="built_in">break</span>;
+        <span class="keyword">case</span> 3:
+            <span class="built_in">exit</span>(0);
+        default:
+            cout &lt;&lt; <span class="string">"请输入正确的数字！"</span> &lt;&lt; endl;
+            <span class="built_in">break</span>;
+        }
+    }
+    <span class="built_in">return</span> 0;
+}
+</code></pre>
+  <hr>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;当夜幕降临时，在太阳以西，国境以南处，等候你的归来~&lt;/blockquote&gt;&lt;/p&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这是操作系统课上的一个课后作业，操作系统考完后基本就忘记的差不多了，把这个实践代码在这里重新过一遍~&lt;/p&gt;
-&lt;h2 id=&quot;文件管理之文件系统设计&quot;&gt;&lt;a href=&quot;#文件管理之文件系统设计&quot; class=&quot;headerlink&quot; title=&quot;文件管理之文件系统设计&quot;&gt;&lt;/a&gt;文件管理之文件系统设计&lt;/h2&gt;&lt;h3 id=&quot;实验目的&quot;&gt;&lt;a href=&quot;#实验目的&quot; class=&quot;headerlink&quot; title=&quot;实验目的&quot;&gt;&lt;/a&gt;实验目的&lt;/h3&gt;&lt;p&gt;本实验的目的是使学生在学习文件系统原理的基础上，通过参考成熟的操作系统中文件系统的设计，实现一个简单的多用户文件系统，加深对文件系统的功能、内部结构包括逻辑结构以及物理结构的理解。&lt;/p&gt;
-&lt;h3 id=&quot;实验内容&quot;&gt;&lt;a href=&quot;#实验内容&quot; class=&quot;headerlink&quot; title=&quot;实验内容&quot;&gt;&lt;/a&gt;实验内容&lt;/h3&gt;&lt;p&gt;设计一个简单的二级文件系统。要求实现下列命令：&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;login             用户登录&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;dir                列文件目录&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;create           创建文件&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;delete           删除文件&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &amp;lt;!-- 列目录时要列出文件名、物理地址、文件长度。--&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;如果一片瓦尔登湖不能荡涤心灵，那就没办法了~&lt;/blockquote&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;数据结构实践任务，花了几个星期在网上找，都是不完全的版本，加入自己的理解写下能排数字和字母的基数排序~&lt;/p&gt;
+&lt;h2 id=&quot;基数排序&quot;&gt;&lt;a href=&quot;#基数排序&quot; class=&quot;headerlink&quot; title=&quot;基数排序&quot;&gt;&lt;/a&gt;基数排序&lt;/h2&gt;&lt;h3 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h3&gt;&lt;p&gt;对输入的关键字序列进行链式基数排序，并分析算法复杂度。&lt;/p&gt;
+&lt;h3 id=&quot;任务要求&quot;&gt;&lt;a href=&quot;#任务要求&quot; class=&quot;headerlink&quot; title=&quot;任务要求&quot;&gt;&lt;/a&gt;任务要求&lt;/h3&gt;&lt;p&gt;1)    对输入的自然数关键字序列进行链式基数排序。&lt;br&gt;2)    需排序的数据是英文单词，从文件中读取；按字典顺序排列，写文件保存。&lt;/p&gt;
+&lt;h3 id=&quot;测试数据&quot;&gt;&lt;a href=&quot;#测试数据&quot; class=&quot;headerlink&quot; title=&quot;测试数据&quot;&gt;&lt;/a&gt;测试数据&lt;/h3&gt;&lt;p&gt;输入自然数关键字序列：278，109，63，930，589，184，505，269，8，83。&lt;br&gt;输入英文单词组成的文件，按字典排序并输出到文件中。
     
     </summary>
     
-      <category term="操作系统" scheme="http://yoursite.com/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <category term="基数排序" scheme="http://yoursite.com/categories/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
     
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
     
-      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
       <category term="数据结构" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="基数排序" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
